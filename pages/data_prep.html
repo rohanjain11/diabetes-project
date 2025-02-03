@@ -49,7 +49,7 @@ mv kaggle.json ~/.kaggle/   # Move API key file to the correct directory
 chmod 600 ~/.kaggle/kaggle.json   # Secure permissions
         </pre>
         <p>
-            We first create a **.kaggle** directory and move our Kaggle API key (`kaggle.json`) into it. 
+            We first create a .kaggle directory and move our Kaggle API key (`kaggle.json`) into it. 
             Then, we set permissions to prevent unauthorized access.
         </p>
     </div>
@@ -57,7 +57,7 @@ chmod 600 ~/.kaggle/kaggle.json   # Secure permissions
     <div class="info-box">
         <h3>Step 3: Download the Dataset</h3>
         <pre>kaggle datasets download -d ankitbatra1210/diabetes-dataset</pre>
-        <p>This command downloads the **Diabetes Dataset** from Kaggle into our working directory.</p>
+        <p>This command downloads the Diabetes Dataset from Kaggle into our working directory.</p>
     </div>
 
     <div class="info-box">
@@ -68,7 +68,7 @@ with zipfile.ZipFile("diabetes-dataset.zip", 'r') as zip_ref:
     zip_ref.extractall("diabetes_data")
 print("Dataset extracted successfully!")
         </pre>
-        <p>Since Kaggle datasets are downloaded as ZIP files, we use Python’s <code>zipfile</code> module to extract it into the **diabetes_data** folder.</p>
+        <p>Since Kaggle datasets are downloaded as ZIP files, we use Python’s <code>zipfile</code> module to extract it into the diabetes_data folder.</p>
     </div>
 </section>
 
@@ -100,7 +100,7 @@ df.isnull().sum()
 # Fill missing values with the median (or drop rows if necessary)
 df.fillna(df.median(), inplace=True)
         </pre>
-        <p>We check for missing values and use **median imputation** to fill them.</p>
+        <p>We check for missing values and use median imputation to fill them.</p>
     </div>
 
     <div class="info-box">
@@ -120,7 +120,7 @@ from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
 df[['Glucose', 'BMI', 'Insulin']] = scaler.fit_transform(df[['Glucose', 'BMI', 'Insulin']])
         </pre>
-        <p>To standardize the dataset, we use **MinMaxScaler** to normalize key numerical features.</p>
+        <p>To standardize the dataset, we use MinMaxScaler to normalize key numerical features.</p>
     </div>
 
     <div class="info-box">
