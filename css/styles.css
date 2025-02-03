@@ -1,0 +1,164 @@
+/* Import Google Fonts */
+/* Import Google Fonts */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FEF9E1;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #6D2323;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.navbar .logo {
+    color: #FEF9E1;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #E5D0AC;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #000;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.primary {
+    background: #E5D0AC;
+    color: #6D2323;
+}
+
+.primary:hover {
+    background: #A31D1D;
+    color: #FEF9E1;
+}
+
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #A31D1D, #6D2323);
+    text-align: center;
+    padding: 120px 20px;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.button-group {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.primary {
+    background: #E5D0AC;
+    color: #6D2323;
+}
+
+.secondary {
+    background: #6D2323;
+    color: #FEF9E1;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* About Section */
+.about {
+    text-align: center;
+    padding: 60px 20px;
+    background: #E5D0AC;
+}
+
+.about h2 {
+    font-size: 30px;
+    color: #6D2323;
+}
+
+/* Features Section */
+.features {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.features h2 {
+    font-size: 30px;
+    color: #A31D1D;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.feature-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feature-card h3 {
+    color: #6D2323;
+}

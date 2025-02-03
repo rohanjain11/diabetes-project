@@ -1,0 +1,137 @@
+
+
+
+/* Container */
+.container1 {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Information Box */
+.info-box {
+    background: #E5D0AC;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Data Grid */
+.data-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.data-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    width: 48%;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Adjustments */
+.data-card img, .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Image Cards */
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+    text-align: center;
+}
+
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+    text-align: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background: white;
+    padding: 20px;
+    max-width: 90%;
+    max-height: 80vh;
+    margin: auto;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+/* CSV Table Styling */
+.csv-container {
+    max-height: 60vh; /* Limits height for scrolling */
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #6D2323;
+    color: white;
+    font-weight: bold;
+}
+

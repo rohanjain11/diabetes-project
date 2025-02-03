@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Prep & EDA</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/data_prep.css"> <!-- Specific CSS for this page -->
+</head>
+<body>
+
+    <!-- Modern Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Diabetes Project</a>
+            <ul class="nav-links">
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="data_prep.html">Data Prep & EDA</a></li>
+                <li><a href="models.html">ML Models</a></li>
+                <li><a href="conclusions.html">Conclusions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Data Preparation & Exploratory Data Analysis</h1>
+        <p>Understanding and Cleaning Data for Accurate Predictions</p>
+    </header>
+
+    <div class="container1">
+
+<!-- Data Acquisition Section -->
+<section class="data-section">
+    <h2>Data Acquisition from Kaggle API</h2>
+    <p>To fetch our dataset, we used the <strong>Kaggle API</strong>. Below is a step-by-step breakdown of how we installed Kaggle, set up authentication, and downloaded the dataset.</p>
+    
+    <div class="info-box">
+        <h3>Step 1: Install the Kaggle Package</h3>
+        <pre>!pip install kaggle</pre>
+        <p>This command installs the Kaggle Python package, which allows us to download datasets directly from Kaggle.</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Step 2: Configure Kaggle API Key</h3>
+        <pre>
+mkdir -p ~/.kaggle   # Create the .kaggle directory
+mv kaggle.json ~/.kaggle/   # Move API key file to the correct directory
+chmod 600 ~/.kaggle/kaggle.json   # Secure permissions
+        </pre>
+        <p>
+            We first create a **.kaggle** directory and move our Kaggle API key (`kaggle.json`) into it. 
+            Then, we set permissions to prevent unauthorized access.
+        </p>
+    </div>
+
+    <div class="info-box">
+        <h3>Step 3: Download the Dataset</h3>
+        <pre>kaggle datasets download -d ankitbatra1210/diabetes-dataset</pre>
+        <p>This command downloads the **Diabetes Dataset** from Kaggle into our working directory.</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Step 4: Extract the Dataset</h3>
+        <pre>
+import zipfile
+with zipfile.ZipFile("diabetes-dataset.zip", 'r') as zip_ref:
+    zip_ref.extractall("diabetes_data")
+print("Dataset extracted successfully!")
+        </pre>
+        <p>Since Kaggle datasets are downloaded as ZIP files, we use Python’s <code>zipfile</code> module to extract it into the **diabetes_data** folder.</p>
+    </div>
+</section>
+
+<!-- Data Cleaning Section -->
+<section class="data-section">
+    <h2>Data Cleaning Steps</h2>
+    <p>After acquiring the dataset, we performed essential cleaning steps to ensure the data was ready for analysis.</p>
+
+    <div class="info-box">
+        <h3>Step 1: Load the Dataset</h3>
+        <pre>
+import pandas as pd
+
+# Load dataset
+df = pd.read_csv("diabetes_data/diabetes.csv")
+
+# Display first few rows
+df.head()
+        </pre>
+        <p>We first load the dataset using Pandas and inspect the first few rows.</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Step 2: Handle Missing Values</h3>
+        <pre>
+# Check for missing values
+df.isnull().sum()
+
+# Fill missing values with the median (or drop rows if necessary)
+df.fillna(df.median(), inplace=True)
+        </pre>
+        <p>We check for missing values and use **median imputation** to fill them.</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Step 3: Remove Duplicates</h3>
+        <pre>
+# Remove duplicate rows
+df.drop_duplicates(inplace=True)
+        </pre>
+        <p>Duplicate records can distort analysis, so we remove them.</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Step 4: Normalize Numerical Features</h3>
+        <pre>
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+df[['Glucose', 'BMI', 'Insulin']] = scaler.fit_transform(df[['Glucose', 'BMI', 'Insulin']])
+        </pre>
+        <p>To standardize the dataset, we use **MinMaxScaler** to normalize key numerical features.</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Step 5: Save the Cleaned Dataset</h3>
+        <pre>
+# Save cleaned data
+cleaned_file_path = "data/diabetes_cleaned.csv"
+df.to_csv(cleaned_file_path, index=False)
+print("Cleaned dataset saved successfully!")
+        </pre>
+        <p>Finally, we save the cleaned dataset for further analysis.</p>
+    </div>
+</section>
+
+<!-- Raw vs Cleaned Data Section -->
+<section class="info-box">
+    <h2>Raw vs. Cleaned Data</h2>
+    <p>Click the dataset image to preview the first few rows.</p>
+
+    <div class="data-grid">
+        <div class="data-card">
+            <h3>Raw Dataset</h3>
+            <img src="../images/raw_data.png" alt="Raw Data Sample" class="zoomable-image" onclick="openCSVModal('diabetes_data.csv')">
+        </div>
+        <div class="data-card">
+            <h3>Cleaned Dataset</h3>
+            <img src="../images/cleaned_data.png" alt="Cleaned Data Sample" class="zoomable-image" onclick="openCSVModal('diabetes_cleaned.csv')">
+        </div>
+    </div>
+</section>
+
+<!-- Modal for CSV Display -->
+<div id="csvModal" class="modal">
+    <span class="close" onclick="closeCSVModal()">&times;</span>
+    <div class="modal-content">
+        <h2 id="csvTitle"></h2>
+        <div class="csv-container">
+            <table id="csvTable">
+                <!-- CSV data will be loaded here -->
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Full-Screen Image Modal -->
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
+
+
+        <!-- Exploratory Data Analysis -->
+        <section class="info-box">
+            <h2>Exploratory Data Analysis (EDA)</h2>
+            <p>Here are key insights from our data, visualized through various plots.</p>
+
+            <div class="grid-container">
+                <div class="card">
+                    <h4>Feature Correlation Heatmap</h4>
+                    <img src="../images/correlation_heatmap.png" alt="Correlation Heatmap">
+                </div>
+                <div class="card">
+                    <h4>Blood Glucose Levels Distribution</h4>
+                    <img src="../images/glucose_distribution.png" alt="Glucose Distribution">
+                </div>
+                <div class="card">
+                    <h4>BMI vs Age</h4>
+                    <img src="../images/bmi_vs_age.png" alt="BMI vs Age">
+                </div>
+                <div class="card">
+                    <h4>Insulin Levels</h4>
+                    <img src="../images/insulin_levels.png" alt="Insulin Levels">
+                </div>
+                <div class="card">
+                    <h4>Diabetes Cases Distribution</h4>
+                    <img src="../images/diabetes_cases.png" alt="Diabetes Cases Distribution">
+                </div>
+                <div class="card">
+                    <h4>Blood Pressure by Diabetes Status</h4>
+                    <img src="../images/blood_pressure.png" alt="Blood Pressure">
+                </div>
+                <div class="card">
+                    <h4>Age vs Cholesterol Levels</h4>
+                    <img src="../images/age_vs_cholesterol.png" alt="Age vs Cholesterol">
+                </div>
+                <div class="card">
+                    <h4>Blood Glucose vs Insulin Levels</h4>
+                    <img src="../images/glucose_vs_insulin.png" alt="Glucose vs Insulin">
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script>
+        function openCSVModal(csvFile) {
+            document.getElementById("csvModal").style.display = "block";
+            document.getElementById("csvTitle").innerText = csvFile.includes("data") ? "Raw Dataset Preview" : "Cleaned Dataset Preview";
+    
+            fetch(csvFile)
+                .then(response => response.text())
+                .then(data => {
+                    let rows = data.split("\n").slice(0, 1000); // Display first 100 rows
+                    let tableHTML = "<thead><tr>";
+    
+                    let headers = rows[0].split(",");
+                    headers.forEach(header => {
+                        tableHTML += `<th>${header.trim()}</th>`;
+                    });
+                    tableHTML += "</tr></thead><tbody>";
+    
+                    for (let i = 1; i < rows.length; i++) {
+                        let cols = rows[i].split(",");
+                        tableHTML += "<tr>";
+                        cols.forEach(col => {
+                            tableHTML += `<td>${col.trim()}</td>`;
+                        });
+                        tableHTML += "</tr>";
+                    }
+                    tableHTML += "</tbody>";
+    
+                    document.getElementById("csvTable").innerHTML = tableHTML;
+                })
+                .catch(error => console.error("Error loading CSV:", error));
+        }
+    
+        function closeCSVModal() {
+            document.getElementById("csvModal").style.display = "none";
+        }
+    </script>
+    
+    
+    
+
+</body>
+</html>

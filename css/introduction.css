@@ -1,0 +1,48 @@
+/* ============================== */
+/* Content Section Styling */
+/* ============================== */
+.content-section {
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Increased spacing between sections */
+}
+
+/* Information Cards */
+.info-box {
+    background: #E5D0AC;  /* Unified color */
+    padding: 35px;
+    border-radius: 12px;
+    width: 85%;
+    max-width: 900px;
+    text-align: left;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;  /* Added margin to create space */
+}
+
+/* Images Inside Info Boxes */
+.info-box img {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 20px auto; /* Centering the images */
+    border-radius: 8px;
+}
+
+/* FAQ List */
+.faq-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px; /* Increased space above FAQ list */
+}
+
+/* FAQ Items - Styled Like Info Boxes */
+.faq-list li {
+    background: #C69C72;
+    padding: 15px;
+    margin: 10px 0;  /* Increased spacing between items */
+    border-radius: 5px;
+    font-size: 18px;
+    color: #000;
+}
