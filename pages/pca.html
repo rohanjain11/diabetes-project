@@ -43,7 +43,19 @@
                 <h2>What is PCA?</h2>
                 <p>Principal Component Analysis (PCA) is a dimensionality reduction technique used to transform high-dimensional data into fewer dimensions while preserving as much variance as possible. It helps in reducing computational complexity and improving model performance by identifying key components.</p>
                 <img src="../images/pca_image2.png" alt="Cleaned Dataset Preview" onclick="openModal(this)">
-                <img src="../images/pca_image1.png" alt="Cleaned Dataset Preview" onclick="openModal(this)">
+                
+                <div class="info-box">
+                    <h2>Principal Component Analysis (PCA) - Brief Overview</h2>
+                    <p>PCA is a dimensionality reduction technique that transforms high-dimensional data into fewer components while retaining as much variance as possible.</p>
+                    
+                    <h3>Variance Explained by Principal Components</h3>
+                    <p>The following visualization illustrates how much variance each principal component captures:</p>
+                    <img src="../images/explained_variance.png" alt="PCA Variance Explained" onclick="openModal(this)">
+                    
+                    <h3>How PCA is Used in This Project</h3>
+                    <p>PCA is applied to reduce dimensionality, making clustering and visualization more efficient. The dataset is projected into a lower-dimensional space to observe patterns in diabetes data.</p>
+                    <img src="../images/pca_image1.png" alt="Cleaned Dataset Preview" onclick="openModal(this)">
+                </div>
             </div>
             <div class="info-box">
                 <h2>GitHub Repository</h2>
@@ -63,7 +75,8 @@
                 <h3>1. Load the Dataset</h3>
                 <p>The cleaned diabetes dataset is loaded before clustering.</p>
                 <img src="../images/load_dataset.png" alt="Load Dataset" onclick="openModal(this)">
-
+                
+                
                 <h3>2. Dropping Non-Numeric Columns</h3>
                 <p>Only numerical features are retained for clustering.</p>
                 <img src="../images/drop_non_numeric.png" alt="Dropping Non-Numeric Columns" onclick="openModal(this)">
@@ -81,8 +94,30 @@
                     <li>Variance retained in 3D PCA: <strong>70.30%</strong></li>
                 </ul>
                 <img src="../images/pca_2d_results.png" alt="2D PCA Results">
+                <p>
+                    The table above represents the transformed dataset after applying Principal Component Analysis (PCA). 
+                    Each row corresponds to a data point projected onto the top two principal components (PC1 and PC2). 
+                    These components capture the most significant variance in the data, reducing dimensionality while 
+                    preserving essential patterns. The spread of values indicates how different observations vary 
+                    along these principal axes, helping in clustering and classification tasks.
+                </p>
                 <img src="../images/pca_3d_results.png" alt="3D PCA Results">
+                <p>
+                    The table above displays the dataset after applying Principal Component Analysis (PCA) with three principal components (PC1, PC2, and PC3). 
+                    Each row represents a data point projected onto these three components, which capture the highest variance in the original dataset. 
+                    The inclusion of a third principal component (PC3) allows for better representation of data structure in three-dimensional space, 
+                    helping improve clustering and visualization. By reducing dimensionality, PCA ensures that essential information is retained 
+                    while eliminating redundant features.
+                </p>
+                
                 <img src="../images/explained_variance.png" alt="Explained Variance">
+                <p>
+                    The variance retained in 2D PCA is 65.61%, meaning that the first two principal components preserve most of the essential 
+                    information from the original dataset while reducing dimensionality. Expanding to 3D PCA increases the retained variance to 70.30%, 
+                    capturing more details while still maintaining computational efficiency. This demonstrates the trade-off between dimensionality 
+                    reduction and information preservation, helping in data visualization and clustering without significant loss of meaningful patterns.
+                </p>
+                
             
                 <!-- GitHub Button (Centered Without Affecting Text) -->
                 <div class="github-btn-container">
@@ -99,7 +134,26 @@
                 <h2>PCA Visualizations</h2>
                 <h3>2D PCA Scatter Plot</h3>
                 <img src="../images/pca_2d_plot.png" alt="2D PCA Scatter Plot" onclick="openModal(this)">
-
+                <p>
+                    The above scatter plot represents the distribution of data points in two-dimensional space using 
+                    Principal Component Analysis (PCA). PCA is used to reduce the dimensionality of the dataset while 
+                    retaining the most important variance. The x-axis corresponds to the first principal component (PC1), 
+                    and the y-axis corresponds to the second principal component (PC2). The plot shows clear clustering 
+                    patterns, indicating that PCA effectively captures the key variations in the dataset, making it easier 
+                    to visualize complex data structures.
+                </p>
+                
+                <h3>3D PCA Scatter Plot</h3>
+                <img src="../images/pca_3d_scatterplot.png" alt="3D PCA Pairplot" onclick="openModal(this)">
+                <p>
+                    The 3D PCA scatter plot provides a three-dimensional representation of the dataset after applying 
+                    Principal Component Analysis (PCA). The three principal components (PC1, PC2, and PC3) serve as the 
+                    new axes, capturing the most significant variance in the data. This visualization allows for a more 
+                    detailed examination of clustering structures and relationships between data points. The presence of 
+                    distinct groups in the 3D space suggests that PCA has effectively preserved key patterns, making it 
+                    a valuable tool for dimensionality reduction while retaining essential information.
+                </p>
+                
                 <h3>3D PCA Pairplot</h3>
                 <img src="../images/pca_3d_plot.png" alt="3D PCA Pairplot" onclick="openModal(this)">
                 <p style="text-align: center;">Top 3 Eigenvalues of the dataset:
@@ -110,6 +164,15 @@
                 <h2>Scree Plot & 95% Variance Retention</h2>
                 <p>To retain at least 95% of the variance, <strong>11 principal components</strong> are needed.</p>
                 <img src="../images/scree_plot.png" alt="Scree Plot" onclick="openModal(this)">
+                <p>
+                    The scree plot illustrates the cumulative explained variance as a function of the number of principal 
+                    components. The y-axis represents the proportion of variance retained, while the x-axis denotes the 
+                    number of principal components. The red horizontal line at 95% variance and the green vertical dashed 
+                    line indicate the optimal number of components required to retain this variance threshold. This 
+                    visualization highlights how PCA reduces dimensionality while preserving the majority of information, 
+                    ensuring a balance between computational efficiency and data retention.
+                </p>
+                
             </div>
 <!-- PCA Results and Conclusion Section -->
 <!-- PCA Results and Conclusion Section -->

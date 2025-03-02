@@ -47,7 +47,19 @@
                     <li><strong>Lift</strong> - How much more likely items occur together than expected.</li>
                 </ul>
                 <img src="../images/arm 1.png" alt="Arm" class="zoomable">
-                <img src="../images/arm 2.png" alt="Arm" class="zoomable">
+                
+                <div class="info-box">
+                    <h2>Association Rule Mining (ARM) - Brief Overview</h2>
+                    <p>ARM helps discover hidden relationships between features in a dataset using Support, Confidence, and Lift metrics.</p>
+                    
+                    <h3>ARM Rules and Relationships</h3>
+                    <p>The visualization below highlights the top association rules extracted from the dataset:</p>
+                    <img src="../images/arm_top_rules.png" alt="Top Association Rules" class="zoomable">
+                    
+                    <h3>How ARM is Used in This Project</h3>
+                    <p>ARM is applied to identify key relationships between patient symptoms, lifestyle factors, and diabetes risk, improving decision-making in healthcare analytics.</p>
+                    <img src="../images/arm 2.png" alt="Arm" class="zoomable">
+                </div>
             </div>
             
             <div class="info-box">
@@ -84,11 +96,15 @@
             <div class="info-box">
                 <h2>ARM Results & Visualizations</h2>
                 <p>The top 15 association rules based on support, confidence, and lift.</p>
+
+                <p><strong>Top Association Rules by Support:</strong> This table displays the most frequent itemsets in the dataset, showing strong co-occurrence relationships based on support values.</p>
                 <img src="../images/support.png" alt="Top 15 Association Rules" class="zoomable">
+
+                <p><strong>Top Association Rules by Confidence:</strong> The confidence metric indicates the likelihood of occurrence of the consequent given the antecedent. Higher confidence values suggest stronger associations between features.</p>
                 <img src="../images/confidence.png" alt="Top 15 Association Rules" class="zoomable">
+                
+                <p><strong>Top Association Rules by Lift:</strong> Lift measures how much more likely the antecedent and consequent appear together compared to random chance. Rules with high lift values indicate strong positive correlations.</p>
                 <img src="../images/lift.png" alt="Top 15 Association Rules" class="zoomable">
-
-
             </div>
 <!-- 
             <div class="info-box">
@@ -99,6 +115,7 @@
 
             <div class="info-box">
                 <h2>Conclusion: Association Rule Mining (ARM) in Healthcare</h2>
+                <img src="../images/arm_top_rules.png" alt="Top 15 Association Rules" class="zoomable">
                 <ul>
                     <li><strong>Strong Symptom-Diagnosis Links:</strong> Certain symptom combinations strongly correlate with specific diagnoses, aiding early disease detection.</li>
                     <li><strong>Lifestyle & Genetics Influence:</strong> Environmental and genetic factors impact health outcomes, supporting personalized treatments.</li>

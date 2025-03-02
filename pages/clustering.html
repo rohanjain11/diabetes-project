@@ -47,7 +47,19 @@
                     <li><strong>DBSCAN</strong> - Identifies clusters based on density and detects outliers.</li>
                 </ul>
                 <img src="../images/clustering 1.png" alt="K-Means Clustering Results" class="zoomable">
-                <img src="../images/clustering 2.png" alt="K-Means Clustering Results" class="zoomable">
+                
+                <div class="info-box">
+                    <h2>Clustering and Distance Metrics - Brief Overview</h2>
+                    <p>Clustering is an unsupervised learning method that groups similar data points based on a predefined similarity measure.</p>
+                    
+                    <h3>Clustering Distance Metrics</h3>
+                    <p>Distance metrics like Euclidean distance, Cosine similarity, and Manhattan distance are explored to determine the most suitable clustering approach.</p>
+                    <img src="../images/clustering_distance_metrics.png" alt="Clustering Distance Metrics" class="zoomable">
+                    
+                    <h3>How Clustering is Used in This Project</h3>
+                    <p>Three clustering techniques K-Means, Hierarchical Clustering, and DBSCAN are applied to group diabetes data based on patterns and relationships.</p>
+                    <img src="../images/clustering 2.png" alt="K-Means Clustering Results" class="zoomable">
+                </div>
             </div>
 
             <div class="info-box">
@@ -82,28 +94,79 @@
 
             <div class="info-box">
                 <h2>K-Means Clustering</h2>
-                <p>Below is the K-Means clustering visualization with the optimal number of clusters:</p>
+                <p>Below is the K-Means clustering visualization with the optimal number of clusters:</p>             
                 <img src="../images/kmeans_clusters.png" alt="K-Means Clustering Results" class="zoomable">
+                <p>
+                    The K-Means clustering visualization displays data points grouped into three distinct clusters 
+                    using Principal Component Analysis (PCA) for dimensionality reduction. Each color represents a 
+                    separate cluster identified by the K-Means algorithm, highlighting natural groupings in the dataset. 
+                    The x-axis and y-axis correspond to the first two principal components, preserving the most 
+                    significant variance in the data. This clustering approach helps in identifying underlying patterns 
+                    and similarities between data points, aiding in better data segmentation and analysis.
+                </p>   
                 <h3>Silhouette Score Analysis</h3>
                 <p>Silhouette Score was used to determine the best number of clusters.</p>
                 <img src="../images/silhouette_score.png" alt="Silhouette Score" class="zoomable">
+                <p>
+                    The silhouette score plot helps determine the optimal number of clusters (k) for K-Means clustering. 
+                    The y-axis represents the silhouette score, which measures how well-defined the clusters are, 
+                    while the x-axis represents different values of k. Higher scores indicate better clustering. 
+                    As observed, the silhouette score is highest for k=2 and k=3, suggesting that these values 
+                    provide the most meaningful clustering structure in the dataset. The sharp decline in score 
+                    beyond k=3 indicates that adding more clusters may not significantly improve the separation.
+                </p>
+                
                 <p style="text-align: center;">Selected 3 Optimal k Values: [2, 3, 4]</p>
                 <h3>K-Means on different cluster</h3>
                 <img src="../images/kmeans_clusters_2.png" alt="K-Means Clustering Results for different clusters." class="zoomable">
+                <p>
+                    The visualization displays the results of K-Means clustering applied to the dataset with different 
+                    values of k (number of clusters). The leftmost plot (k=2) separates the data into two broad groups, 
+                    but lacks finer distinctions. The middle plot (k=3) provides a more meaningful separation, 
+                    aligning well with the natural structure in the data. The rightmost plot (k=4) introduces an 
+                    additional cluster, potentially leading to over-segmentation. Based on the silhouette score 
+                    analysis, k=3 appears to be the most optimal choice, balancing cohesion and separation.
+                </p>
+                
             </div>
 
             <div class="info-box">
                 <h2>Hierarchical Clustering</h2>
                 <p>Hierarchical clustering dendrogram is shown below:</p>
                 <img src="../images/hierarchical_dendrogram.png" alt="Hierarchical Clustering Dendrogram" class="zoomable">
-                <p>Hierarchical clustering using cosine similarity.</p>
+                <p>
+                    The hierarchical clustering dendrogram visually represents the hierarchical relationships among data points.
+                    Each merge represents clusters combining based on their similarity, with the y-axis (distance) showing how 
+                    dissimilar two clusters are before merging. The large height of the final merges indicates that three 
+                    distinct clusters are optimal, which aligns with previous clustering results. This approach helps in 
+                    understanding natural data groupings and is useful when the number of clusters is unknown.
+                </p>
+                
+                <h2>Hierarchical clustering using cosine similarity.</h2>
                 <img src="../images/hierarchical_clusters.png" alt="Hierarchical Clustering Results" class="zoomable">
+                <p>
+                    This dendrogram represents hierarchical clustering based on cosine similarity, a metric particularly useful 
+                    for high-dimensional data. Instead of Euclidean distance, cosine similarity measures the angle between 
+                    vectors, making it effective for text data and feature-rich datasets. The clustering structure indicates 
+                    that three distinct groups emerge naturally. Cosine similarity-based clustering is valuable when dealing 
+                    with non-linear relationships and sparse data, ensuring meaningful groupings in complex datasets.
+                </p>
+                
             </div>
 
             <div class="info-box">
                 <h2>DBSCAN Clustering</h2>
                 <p>DBSCAN clustering was applied to detect dense regions and outliers.</p>
                 <img src="../images/dbscan_clusters.png" alt="DBSCAN Clustering Results" class="zoomable">
+                <p>
+                    The DBSCAN (Density-Based Spatial Clustering of Applications with Noise) algorithm was used to identify 
+                    dense clusters and detect outliers in the dataset. Unlike K-Means, DBSCAN does not require specifying the 
+                    number of clusters beforehand. The plot visualizes clusters using two principal components, where different 
+                    colors represent distinct clusters. Points labeled as "-1" indicate noise or outliers that do not belong to 
+                    any cluster. This method is particularly useful for datasets with irregular shapes and varying densities, 
+                    making it a powerful tool for anomaly detection and pattern recognition.
+                </p>
+                
                 
             </div>
 
