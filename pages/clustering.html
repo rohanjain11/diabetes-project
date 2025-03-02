@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering Analysis</title>
+    <link rel="stylesheet" href="../css/styles.css">  <!-- Global Styles -->
+    <link rel="stylesheet" href="../css/clustering.css">  <!-- Page-Specific Styles -->
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Diabetes Project</a>
+            <ul class="nav-links">
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="data_prep.html">Data Prep & EDA</a></li>
+                <li><a href="models.html">ML Models</a></li>
+                <li><a href="pca.html">PCA</a></li>
+                <li><a href="clustering.html" class="active">Clustering</a></li>
+                <li><a href="arm.html" >ARM</a></li>
+                <li><a href="conclusions.html">Conclusions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Clustering Analysis</h1>
+            <p>Uncovering Patterns in Diabetes Data</p>
+        </div>
+    </header>
+
+    <!-- Clustering Content -->
+    <section class="content-section">
+        <div class="container">
+
+            <div class="info-box">
+                <h2>What is Clustering?</h2>
+                <p>Clustering is an unsupervised learning technique used to group similar data points. We use three clustering methods:</p>
+                <ul>
+                    <li><strong>K-Means Clustering</strong> - Divides data into k-groups based on similarity.</li>
+                    <li><strong>Hierarchical Clustering</strong> (HClust) - Builds a hierarchy of clusters.</li>
+                    <li><strong>DBSCAN</strong> - Identifies clusters based on density and detects outliers.</li>
+                </ul>
+                <img src="../images/clustering 1.png" alt="K-Means Clustering Results" class="zoomable">
+                <img src="../images/clustering 2.png" alt="K-Means Clustering Results" class="zoomable">
+            </div>
+
+            <div class="info-box">
+                <h2>GitHub Repository</h2>
+                <a href="https://github.com/your-repo-link" target="_blank" class="github-link">
+                    View Clustering Code on GitHub ↗
+                </a>
+            </div>
+            <div class="info-box">
+                <h2>Dataset Used</h2>
+                <p>We use the cleaned diabetes dataset for clustering. Below is a preview:</p>
+                <img src="../images/cleaned_data.png" alt="Cleaned Dataset" class="zoomable">
+                <a href="../data/diabetes_cleaned.csv" download class="download-btn">Download Cleaned Dataset</a>
+            </div>
+
+             <!-- Data Preprocessing Section -->
+            <div class="info-box">
+                <h2>Data Preprocessing Steps</h2>
+
+                <h3>1. Load the Dataset</h3>
+                <p>The cleaned diabetes dataset is loaded before clustering.</p>
+                <img src="../images/load_dataset.png" alt="Load Dataset" class="zoomable">
+
+                <h3>2. Dropping Non-Numeric Columns</h3>
+                <p>Only numerical features are retained for clustering.</p>
+                <img src="../images/drop_non_numeric.png" alt="Dropping Non-Numeric Columns" class="zoomable">
+
+                <h3>3. Standardizing the Columns</h3>
+                <p>StandardScaler is applied to normalize feature values.</p>
+                <img src="../images/standardized_data.png" alt="Standardizing Data" class="zoomable">
+            </div>
+
+            <div class="info-box">
+                <h2>K-Means Clustering</h2>
+                <p>Below is the K-Means clustering visualization with the optimal number of clusters:</p>
+                <img src="../images/kmeans_clusters.png" alt="K-Means Clustering Results" class="zoomable">
+                <h3>Silhouette Score Analysis</h3>
+                <p>Silhouette Score was used to determine the best number of clusters.</p>
+                <img src="../images/silhouette_score.png" alt="Silhouette Score" class="zoomable">
+                <p style="text-align: center;">Selected 3 Optimal k Values: [2, 3, 4]</p>
+                <h3>K-Means on different cluster</h3>
+                <img src="../images/kmeans_clusters_2.png" alt="K-Means Clustering Results for different clusters." class="zoomable">
+            </div>
+
+            <div class="info-box">
+                <h2>Hierarchical Clustering</h2>
+                <p>Hierarchical clustering dendrogram is shown below:</p>
+                <img src="../images/hierarchical_dendrogram.png" alt="Hierarchical Clustering Dendrogram" class="zoomable">
+                <p>Hierarchical clustering using cosine similarity.</p>
+                <img src="../images/hierarchical_clusters.png" alt="Hierarchical Clustering Results" class="zoomable">
+            </div>
+
+            <div class="info-box">
+                <h2>DBSCAN Clustering</h2>
+                <p>DBSCAN clustering was applied to detect dense regions and outliers.</p>
+                <img src="../images/dbscan_clusters.png" alt="DBSCAN Clustering Results" class="zoomable">
+                
+            </div>
+
+            <div class="info-box">
+                <h2>Performance Comparison</h2>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Method</th>
+                        <th>Performance</th>
+                        <th>Scalability</th>
+                        <th>Interpretability</th>
+                    </tr>
+                    <tr>
+                        <td>K-Means</td>
+                        <td>Fast & Efficient</td>
+                        <td>Scalable</td>
+                        <td>Good for spherical clusters</td>
+                    </tr>
+                    <tr>
+                        <td>Hierarchical</td>
+                        <td>Slower for large data</td>
+                        <td>Less scalable</td>
+                        <td>Useful for hierarchy</td>
+                    </tr>
+                    <tr>
+                        <td>DBSCAN</td>
+                        <td>Handles noise well</td>
+                        <td>Not good for high dimensions</td>
+                        <td>Great for irregular clusters</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="info-box">
+                <h2>Clustering Conclusion</h2>
+            
+                <h3>K-Means Clustering:</h3>
+                <ul>
+                    <li>The <strong>silhouette score analysis</strong> helped identify the optimal number of clusters, with three clusters performing well.</li>
+                    <li>The <strong>2D PCA projection</strong> of K-Means clustering shows well-separated groups, indicating effective partitioning.</li>
+                    <li>The method works well for spherical clusters but may struggle with more complex, non-linear structures.</li>
+                </ul>
+            
+                <h3>Hierarchical Clustering:</h3>
+                <ul>
+                    <li>The <strong>dendrogram visualization</strong> indicates the hierarchical relationships between data points.</li>
+                    <li>Using <strong>cosine similarity</strong> improved cluster separation compared to Euclidean distance.</li>
+                    <li>However, hierarchical clustering is <strong>computationally expensive</strong> for large datasets and may not scale efficiently.</li>
+                </ul>
+            
+                <h3>DBSCAN Clustering:</h3>
+                <ul>
+                    <li>DBSCAN effectively identifies <strong>dense clusters and outliers</strong>, making it suitable for datasets with varying density.</li>
+                    <li>The presence of outliers (noise points labeled as <strong>-1</strong>) indicates that the dataset contains regions of lower density.</li>
+                    <li>However, <strong>parameter tuning (epsilon and min_samples)</strong> is crucial for obtaining meaningful clusters.</li>
+                </ul>
+            
+                <h3>Overall Insights:</h3>
+                <ul>
+                    <li><strong>K-Means</strong> is efficient for well-separated, compact clusters but struggles with varying density.</li>
+                    <li><strong>Hierarchical Clustering</strong> provides interpretability but is computationally expensive for large datasets.</li>
+                    <li><strong>DBSCAN</strong> handles noise and irregular cluster shapes well but requires careful parameter selection.</li>
+                    <li>Each clustering method has its strengths and limitations, and the choice of technique depends on <strong>dataset characteristics</strong> and the problem at hand.</li>
+                </ul>
+            </div>
+            
+            
+
+        </div>
+    </section>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

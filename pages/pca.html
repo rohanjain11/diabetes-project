@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCA Analysis</title>
+    <link rel="stylesheet" href="../css/styles.css">  <!-- Global Styles -->
+    <link rel="stylesheet" href="../css/pca.css">  <!-- Page-Specific Styles -->
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Diabetes Project</a>
+            <ul class="nav-links">
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="data_prep.html">Data Prep & EDA</a></li>
+                <li><a href="models.html">ML Models</a></li>
+                <li><a href="pca.html" class="active">PCA</a></li>
+                <li><a href="clustering.html">Clustering</a></li>
+                <li><a href="arm.html" >ARM</a></li>
+                <li><a href="conclusions.html">Conclusions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Principal Component Analysis (PCA)</h1>
+            <p>Reducing Dimensionality While Retaining Key Information</p>
+        </div>
+    </header>
+
+    <!-- PCA Content -->
+    <section class="content-section">
+        <div class="container">
+
+            <div class="info-box">
+                
+                <h2>What is PCA?</h2>
+                <p>Principal Component Analysis (PCA) is a dimensionality reduction technique used to transform high-dimensional data into fewer dimensions while preserving as much variance as possible. It helps in reducing computational complexity and improving model performance by identifying key components.</p>
+                <img src="../images/pca_image2.png" alt="Cleaned Dataset Preview" onclick="openModal(this)">
+                <img src="../images/pca_image1.png" alt="Cleaned Dataset Preview" onclick="openModal(this)">
+            </div>
+            <div class="info-box">
+                <h2>GitHub Repository</h2>
+                <a href="https://github.com/your-repo-link" target="_blank" class="github-link">
+                    View PCA Code on GitHub ↗
+                </a>
+            </div>
+            <div class="info-box">
+                <h2>Dataset Used</h2>
+                <p>For PCA analysis, we used the cleaned diabetes dataset. Below is a preview of the dataset:</p>
+                <img src="../images/cleaned_data.png" alt="Cleaned Dataset Preview" onclick="openModal(this)">
+                <a href="../data/diabetes_cleaned.csv" download class="download-btn">Download Cleaned Dataset</a>
+            </div>
+            <div class="info-box">
+                <h2>Data Preprocessing Steps</h2>
+
+                <h3>1. Load the Dataset</h3>
+                <p>The cleaned diabetes dataset is loaded before clustering.</p>
+                <img src="../images/load_dataset.png" alt="Load Dataset" onclick="openModal(this)">
+
+                <h3>2. Dropping Non-Numeric Columns</h3>
+                <p>Only numerical features are retained for clustering.</p>
+                <img src="../images/drop_non_numeric.png" alt="Dropping Non-Numeric Columns" onclick="openModal(this)">
+
+                <h3>3. Standardizing the Columns</h3>
+                <p>StandardScaler is applied to normalize feature values.</p>
+                <img src="../images/standardized_data.png" alt="Standardizing Data" onclick="openModal(this)">
+            </div>
+
+            <div class="info-box">
+                <h2>PCA Implementation & Results</h2>
+                <p>We applied PCA on the dataset with 2 and 3 components to visualize and analyze the retained variance.</p>
+                <ul class="variance-list">
+                    <li>Variance retained in 2D PCA: <strong>65.61%</strong></li>
+                    <li>Variance retained in 3D PCA: <strong>70.30%</strong></li>
+                </ul>
+                <img src="../images/pca_2d_results.png" alt="2D PCA Results">
+                <img src="../images/pca_3d_results.png" alt="3D PCA Results">
+                <img src="../images/explained_variance.png" alt="Explained Variance">
+            
+                <!-- GitHub Button (Centered Without Affecting Text) -->
+                <div class="github-btn-container">
+                    <a href="https://github.com/YOUR_GITHUB_REPO_LINK" target="_blank" class="github-btn">
+                        View PCA Code on GitHub 
+                        <span class="arrow-icon">→</span>
+                    </a>
+                </div>
+            </div>
+            
+            
+
+            <div class="info-box">
+                <h2>PCA Visualizations</h2>
+                <h3>2D PCA Scatter Plot</h3>
+                <img src="../images/pca_2d_plot.png" alt="2D PCA Scatter Plot" onclick="openModal(this)">
+
+                <h3>3D PCA Pairplot</h3>
+                <img src="../images/pca_3d_plot.png" alt="3D PCA Pairplot" onclick="openModal(this)">
+                <p style="text-align: center;">Top 3 Eigenvalues of the dataset:
+                    [6.47232095 2.05658962 0.60963223]</p>
+            </div>
+
+            <div class="info-box">
+                <h2>Scree Plot & 95% Variance Retention</h2>
+                <p>To retain at least 95% of the variance, <strong>11 principal components</strong> are needed.</p>
+                <img src="../images/scree_plot.png" alt="Scree Plot" onclick="openModal(this)">
+            </div>
+<!-- PCA Results and Conclusion Section -->
+<!-- PCA Results and Conclusion Section -->
+<div class="info-box">
+    <h2>PCA Results and Conclusion</h2>
+
+    <h3>Overview of PCA Analysis</h3>
+    <p>Principal Component Analysis (PCA) was performed to reduce the dimensionality of the dataset while preserving the most important variance in the data. 
+       The goal was to project the data into a lower-dimensional space to identify key patterns and relationships among features.</p>
+
+    <h3>Variance Retention</h3>
+    <p>PCA was applied to retain <strong>95% of the variance</strong> in the dataset. The optimal number of principal components required to maintain this variance was determined.</p>
+    <ul>
+        <li><strong>Retained Variance:</strong> 95%</li>
+        <li><strong>Optimal Principal Components Chosen:</strong> <span style="color: red;">11</span> </li>
+    </ul>
+
+    <h3>Key Data Patterns from PCA Projections</h3>
+    <p>The dataset was projected into both <strong>2D and 3D spaces</strong> to visualize the data structure and detect clusters or trends. These projections helped reveal:</p>
+    <ul>
+        <li>Groupings and clusters in the dataset, indicating potential natural separations.</li>
+        <li>The importance of principal components in explaining data variability.</li>
+    </ul>
+    <p>However, if PCA retained only <strong>one principal component</strong>, 2D and 3D plots were skipped as visualization was not feasible.</p>
+
+    <h3>Top Influencing Features in PCA</h3>
+    <p>Each principal component represents a linear combination of the original features, with varying importance. 
+       The <strong>top features</strong> contributing to the first few principal components were identified:</p>
+
+    <div class="scrollable-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>PC1</th> <th>PC2</th> <th>PC3</th> <th>PC4</th> <th>PC5</th> <th>PC6</th> <th>PC7</th> <th>PC8</th> <th>PC9</th> <th>PC10</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Age</td> <td>Blood Glucose Levels</td> <td>Neurological Assessments</td> <td>Pancreatic Health</td> <td>Insulin Levels</td>
+                    <td>Birth Weight</td> <td>Digestive Enzyme Levels</td> <td>BMI</td> <td>Cholesterol Levels</td> <td>Waist Circumference</td>
+                </tr>
+                <tr>
+                    <td>Blood Pressure</td> <td>Pulmonary Function</td> <td>Insulin Levels</td> <td>Birth Weight</td> <td>Digestive Enzyme Levels</td>
+                    <td>Pulmonary Function</td> <td>Pulmonary Function</td> <td>Neurological Assessments</td> <td>Digestive Enzyme Levels</td> <td>Blood Glucose Levels</td>
+                </tr>
+                <tr>
+                    <td>Weight Gain During Pregnancy</td> <td>Neurological Assessments</td> <td>BMI</td> <td>Pulmonary Function</td> <td>Pulmonary Function</td>
+                    <td>Insulin Levels</td> <td>Waist Circumference</td> <td>Weight Gain During Pregnancy</td> <td>Blood Glucose Levels</td> <td>Weight Gain During Pregnancy</td>
+                </tr>
+                <tr>
+                    <td>Cholesterol Levels</td> <td>Pancreatic Health</td> <td>Pulmonary Function</td> <td>Blood Glucose Levels</td> <td>Weight Gain During Pregnancy</td>
+                    <td>Blood Glucose Levels</td> <td>Insulin Levels</td> <td>Cholesterol Levels</td> <td>Blood Pressure</td> <td>Pulmonary Function</td>
+                </tr>
+                <tr>
+                    <td>Waist Circumference</td> <td>Digestive Enzyme Levels</td> <td>Blood Pressure</td> <td>Insulin Levels</td> <td>Birth Weight</td>
+                    <td>Age</td> <td>Blood Glucose Levels</td> <td>Digestive Enzyme Levels</td> <td>Pulmonary Function</td> <td>BMI</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Conclusion</h3>
+    <p>PCA effectively reduced the dataset’s dimensions while retaining <strong>95% of the original variance</strong>. 
+       The most important <strong>principal components</strong> were identified, highlighting key medical and demographic features influencing diabetes-related outcomes.</p>
+
+    <p>By using PCA, we achieved:</p>
+    <ul>
+        <li><strong>Reduction in dimensionality</strong> for improved efficiency in clustering and machine learning models.</li>
+        <li><strong>Identification of key contributing features</strong>, which can be used for further statistical analysis or predictive modeling.</li>
+        <li><strong>Better visualization and pattern recognition</strong> to understand how the dataset is structured.</li>
+    </ul>
+
+    <p>PCA plays a crucial role in <strong>enhancing model performance and reducing computational complexity</strong>, 
+       making it an essential preprocessing step in data science workflows.</p>
+</div>
+
+
+
+        </div>
+    </section>
+    
+
+
+    <!-- Full-Screen Modal for Image Zoom -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script src="../js/script.js"></script> <!-- External JavaScript -->
+</body>
+</html>

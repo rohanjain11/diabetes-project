@@ -1,0 +1,200 @@
+/* ============================== */
+/* PCA Page Styling */
+/* ============================== */
+
+
+
+/* Main Content Section */
+.content-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+    gap: 30px;  /* Ensures consistent spacing */
+}
+
+/* Container for Layout */
+.container {
+    width: 85%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Information Box */
+.info-box {
+    background: #E5D0AC;
+    padding: 30px;
+    border-radius: 12px;
+    width: 85%;
+    max-width: 900px;
+    text-align: left;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 25px;  /* Centers the box */
+}
+
+/* Images */
+.info-box img {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 20px auto;  /* Centers images */
+    border-radius: 8px;
+}
+
+/* Download Button */
+.download-btn {
+    display: block;
+    text-align: center;
+    width: max-content;
+    padding: 12px 20px;
+    background: #A31D1D;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 15px auto;
+}
+.download-btn:hover {
+    background: #6D2323;
+}
+
+/* List Styling */
+.info-box ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.info-box ul li {
+    margin-bottom: 10px;
+}
+
+/* Full-Screen Image Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #f1f1f1;
+}
+/* GitHub Button - Centered */
+.github-btn-container {
+    display: flex;
+    justify-content: center; /* Ensures button is centered */
+    margin-top: 20px;
+}
+
+/* GitHub Button */
+.github-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #24292E; /* GitHub Dark Gray */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.github-link {
+    display: block;
+    text-align: center;
+    width: max-content;
+    padding: 12px 20px;
+    background: #A31D1D;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 15px auto;
+}
+.scrollable-table {
+    overflow-x: auto;  /* Enables horizontal scrolling if needed */
+    max-width: 100%;
+    margin: 20px 0;
+}
+
+/* Styling for the table */
+.scrollable-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #F5E6C8; /* Light beige background */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+.scrollable-table th {
+    background: #8B5A2B; /* Dark brown header */
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #d4b78f;
+}
+
+/* Table Row Styling */
+.scrollable-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #d4b78f;
+    color: #4B3621;
+}
+
+/* Alternate Row Coloring for Better Readability */
+.scrollable-table tbody tr:nth-child(even) {
+    background: #EED9C4;
+}
+
+/* Improve spacing between rows */
+.scrollable-table tbody tr {
+    transition: background 0.3s ease-in-out;
+}
+
+.scrollable-table tbody tr:hover {
+    background: #DECBA4;
+}
+
+/* Responsive - Make the table scrollable on small screens */
+@media (max-width: 768px) {
+    .scrollable-table table {
+        font-size: 14px;
+    }
+}

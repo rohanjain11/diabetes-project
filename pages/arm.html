@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Association Rule Mining</title>
+    <link rel="stylesheet" href="../css/styles.css">  <!-- Global Styles -->
+    <link rel="stylesheet" href="../css/arm.css">  <!-- Page-Specific Styles -->
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Diabetes Project</a>
+            <ul class="nav-links">
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="data_prep.html">Data Prep & EDA</a></li>
+                <li><a href="models.html">ML Models</a></li>
+                <li><a href="pca.html">PCA</a></li>
+                <li><a href="clustering.html">Clustering</a></li>
+                <li><a href="arm.html" class="active">ARM</a></li>
+                <li><a href="conclusions.html">Conclusions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Association Rule Mining (ARM)</h1>
+            <p>Discovering Hidden Patterns in Diabetes Data</p>
+        </div>
+    </header>
+
+    <!-- ARM Content -->
+    <section class="content-section">
+        <div class="container">
+
+            <div class="info-box">
+                <h2>What is Association Rule Mining?</h2>
+                <p>Association Rule Mining (ARM) is used to uncover hidden relationships in datasets. It is widely used in market basket analysis, healthcare, and more.</p>
+                <ul>
+                    <li><strong>Support</strong> - How frequently an itemset appears in the dataset.</li>
+                    <li><strong>Confidence</strong> - How often items in a rule appear together.</li>
+                    <li><strong>Lift</strong> - How much more likely items occur together than expected.</li>
+                </ul>
+                <img src="../images/arm 1.png" alt="Arm" class="zoomable">
+                <img src="../images/arm 2.png" alt="Arm" class="zoomable">
+            </div>
+            
+            <div class="info-box">
+                <h2>GitHub Repository</h2>
+                <a href="https://github.com/your-repo-link" target="_blank" class="github-link">
+                    View Clustering Code on GitHub ↗
+                </a>
+            </div>
+
+            <div class="info-box">
+                <h2>Dataset Used</h2>
+                <p>I applied ARM on the cleaned diabetes dataset. Below is a preview:</p>
+                <img src="../images/cleaned_data.png" alt="Cleaned Dataset" class="zoomable">
+                <a href="../data/diabetes_cleaned.csv" download class="download-btn">Download Cleaned Dataset</a>
+            </div>
+
+            <!-- Data Preprocessing Section -->
+            <div class="info-box">
+                <h2>Data Preprocessing Steps</h2>
+
+                <h3>1. Load the Dataset</h3>
+                <p>The cleaned diabetes dataset is loaded before applying ARM.</p>
+                <img src="../images/load_arm_data.png" alt="Load Dataset" class="zoomable">
+
+                <h3>2. Converting Categorical Data</h3>
+                <p>All categorical variables were transformed into a suitable format for rule mining.</p>
+                <img src="../images/data_transformation.png" alt="Data Transformation" class="zoomable">
+
+                <h3>3. Encoding Categorical Values</h3>
+                <p>Using one-hot encoding, categorical features were represented as binary values.</p>
+                <img src="../images/one_hot_encoding.png" alt="One-Hot Encoding" class="zoomable">
+            </div>
+
+            <div class="info-box">
+                <h2>ARM Results & Visualizations</h2>
+                <p>The top 15 association rules based on support, confidence, and lift.</p>
+                <img src="../images/support.png" alt="Top 15 Association Rules" class="zoomable">
+                <img src="../images/confidence.png" alt="Top 15 Association Rules" class="zoomable">
+                <img src="../images/lift.png" alt="Top 15 Association Rules" class="zoomable">
+
+
+            </div>
+<!-- 
+            <div class="info-box">
+                <h2>ARM Network Visualization</h2>
+                <p>The graph below shows key associations between different items.</p>
+                <img src="../images/arm_network.png" alt="ARM Network Graph" class="zoomable">
+            </div> -->
+
+            <div class="info-box">
+                <h2>Conclusion: Association Rule Mining (ARM) in Healthcare</h2>
+                <ul>
+                    <li><strong>Strong Symptom-Diagnosis Links:</strong> Certain symptom combinations strongly correlate with specific diagnoses, aiding early disease detection.</li>
+                    <li><strong>Lifestyle & Genetics Influence:</strong> Environmental and genetic factors impact health outcomes, supporting personalized treatments.</li>
+                    <li><strong>Key Health Metrics:</strong> Blood Glucose Levels, Pulmonary Function, and Insulin Levels frequently appear in top rules, highlighting their importance.</li>
+                </ul>
+
+                <h3>Rule Importance</h3>
+                <ul>
+                    <li><strong>Lift:</strong> Identifies strong, non-random associations.</li>
+                    <li><strong>Confidence:</strong> Shows the likelihood of a condition given another factor.</li>
+                    <li><strong>Support:</strong> Highlights commonly occurring patterns.</li>
+                </ul>
+
+                <h3>Healthcare Impact</h3>
+                <p>ARM helps in risk prediction, preventive care, and personalized patient management.</p>
+
+                <p><strong>Final Thought:</strong> ARM provides data-driven insights to improve diagnosis, treatment, and preventive strategies in healthcare.</p>
+            </div>
+
+
+        </div>
+    </section>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
