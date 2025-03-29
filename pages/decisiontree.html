@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Decision Tree Analysis</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/decisiontree.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">Diabetes Project</a>
+      <ul class="nav-links">
+        <li><a href="introduction.html">Introduction</a></li>
+        <li><a href="data_prep.html">Data Prep & EDA</a></li>
+        <li><a href="models.html">ML Models</a></li>
+        <li><a href="pca.html">PCA</a></li>
+        <li><a href="clustering.html">Clustering</a></li>
+        <li><a href="arm.html">ARM</a></li>
+        <li><a href="naivebayes.html">Naïve Bayes</a></li>
+        <li><a href="decisiontree.html" class="active">Decision Tree</a></li>
+        <li><a href="regression.html" >Regression</a></li>
+        <li><a href="conclusions.html">Conclusions</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Decision Tree Classification</h1>
+      <p>Visualizing Tree-Based Decisions for Diabetes Prediction</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <section class="content-section">
+    <div class="container">
+
+      <!-- Intro -->
+      <div class="info-box">
+        <h2>What is a Decision Tree?</h2>
+        <p>A Decision Tree is a supervised learning algorithm that splits data based on feature conditions. It’s easy to interpret and visualizes decisions in a tree-like structure.</p>
+        <ul>
+          <li><strong>Root Node:</strong> First decision point</li>
+          <li><strong>Internal Nodes:</strong> Feature splits</li>
+          <li><strong>Leaf Nodes:</strong> Final prediction classes</li>
+        </ul>
+        <img src="../images/decisiontree.png" alt="Decision Tree Diagram" onclick="openModal(this)">
+      </div>
+      <!-- GitHub -->
+      <div class="info-box">
+        <h2>GitHub Repository</h2>
+        <a href="" class="github-link" target="_blank">
+          View Decision Tree Code on GitHub ↗
+        </a>
+      </div>
+      <!-- Dataset -->
+      <div class="info-box">
+        <h2>Dataset Used</h2>
+        <p>We used the cleaned diabetes dataset for all Decision Tree models.</p>
+        <img src="../images/cleaned_data.png" alt="Dataset" onclick="openModal(this)">
+        <a href="../data/diabetes_cleaned.csv" class="download-btn" download>Download Cleaned Dataset</a>
+      </div>
+
+      <!-- Preprocessing -->
+      <div class="info-box">
+        <h2>Data Preprocessing</h2>
+        <p>Steps applied before training the models:</p>
+        <ol>
+          <li>Loaded cleaned dataset <br><img src="../images/tree_step1_load.png" alt="Step 1" onclick="openModal(this)"></li>
+          <li>Encoded categorical features <br><img src="../images/tree_step2_encoding.png" alt="Step 2" onclick="openModal(this)"></li>
+          <li>Separated features and target variables <br></li>
+          <li>Train-test split (80/20) <br></li>
+          <h4>Training Data Preview</h4>
+    <p>Sample of the training data used to train the model:</p>
+    <img src="../images/dt_train_sample.png" alt="Training Data Sample" onclick="openModal(this)">
+    <a href="../data/decisiontree_train_sample.csv" download class="download-btn">Download Training Sample CSV</a>
+  
+    <h4>Testing Data Preview</h4>
+    <p>Sample of the testing data used to evaluate model accuracy:</p>
+    <img src="../images/dt_test_sample.png" alt="Testing Data Sample" onclick="openModal(this)">
+    <a href="../data/decisiontree_test_sample.csv" download class="download-btn">Download Testing Sample CSV</a>
+  
+        </ol>
+      </div>
+
+<!-- Add this inside your <section class="content-section"><div class="container"> -->
+
+<!-- Decision Tree Model Section -->
+
+<!-- Model Performance Table -->
+<div class="info-box">
+  <h2>Decision Tree Models</h2>
+
+  <h3>Default Decision Tree (Without Tuning)</h3>
+  <p>This model was trained using basic/default parameters.</p>
+  <ul>
+    <li>No maximum depth or splitting constraints were applied.</li>
+    <li>Multiple root features were tested: Blood Glucose, Weight Gain, and Age.</li>
+  </ul>
+  <p><strong>Overall Accuracy:</strong> <span style="color: #A31D1D;">54.5%</span></p>
+
+  <div class="tree-grid">
+    <div>
+      <h4>Root: Blood Glucose</h4>
+      <img src="../images/tree_root_bloodglucose.png" alt="Tree Blood Glucose" onclick="openModal(this)">
+    </div>
+    <div>
+      <h4>Root: Weight Gain</h4>
+      <img src="../images/tree_root_weightgain.png" alt="Tree Weight Gain" onclick="openModal(this)">
+    </div>
+    <div>
+      <h4>Root: Age</h4>
+      <img src="../images/tree_root_age.png" alt="Tree Age" onclick="openModal(this)">
+    </div>
+  </div>
+</div>
+
+<div class="info-box">
+  <h2>Tuned Decision Tree (GridSearchCV)</h2>
+  <p>Hyperparameter tuning significantly improved the model performance.</p>
+  <ul>
+    <li><strong>Best Parameters:</strong> max_depth=6, min_samples_split=4, criterion='entropy'</li>
+    <li><strong>Overall Accuracy:</strong> <span style="color: green;">88.7%</span></li>
+    <li>Roots tried: Genetic Markers, Autoantibodies, Family History</li>
+  </ul>
+
+  <div class="tree-grid">
+    <div>
+      <h4>Root: Genetic Markers</h4>
+      <img src="../images/tree_tuned_genetic.png" alt="Tuned Tree Genetic" onclick="openModal(this)">
+    </div>
+    <div>
+      <h4>Root: Autoantibodies</h4>
+      <img src="../images/tree_tuned_autoantibodies.png" alt="Tuned Tree Autoantibodies" onclick="openModal(this)">
+    </div>
+    <div>
+      <h4>Root: Family History</h4>
+      <img src="../images/tree_tuned_family.png" alt="Tuned Tree Family" onclick="openModal(this)">
+    </div>
+  </div>
+</div>
+
+<div class="info-box">
+  <h2>Model Performance Comparison</h2>
+  <p>Performance metrics for both default and tuned models across different roots:</p>
+  <table class="result-table">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Accuracy</th>
+        <th>F1 Macro</th>
+        <th>F1 Weighted</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Default Tree</td>
+        <td>54.5%</td>
+        <td>0.47</td>
+        <td>0.47</td>
+      </tr>
+      <tr>
+        <td>Tuned Tree</td>
+        <td>88.7%</td>
+        <td>0.89</td>
+        <td>0.89</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="info-box">
+  <h2>Confusion Matrices</h2>
+  <h3>Default Trees</h3>
+  <img src="../images/cm_bg.png" alt="Confusion Matrix - Blood Glucose" onclick="openModal(this)">
+  <img src="../images/cm_wg.png" alt="Confusion Matrix - Weight Gain" onclick="openModal(this)">
+  <img src="../images/cm_age.png" alt="Confusion Matrix - Age" onclick="openModal(this)">
+
+  <h3>Tuned Trees</h3>
+  <img src="../images/cm_tuned_genetic.png" alt="Confusion Matrix - Genetic Markers" onclick="openModal(this)">
+  <img src="../images/cm_tuned_autoantibodies.png" alt="Confusion Matrix - Autoantibodies" onclick="openModal(this)">
+  <img src="../images/cm_tuned_family.png" alt="Confusion Matrix - Family History" onclick="openModal(this)">
+</div>
+
+
+<!-- Final Conclusion -->
+<div class="info-box">
+  <h2>Results and Conclusion</h2>
+
+  <h3>Summary of Decision Tree Performance</h3>
+  <p>We implemented two types of Decision Trees:</p>
+  <ul>
+    <li><strong>Default Decision Tree:</strong> Using root features like Blood Glucose, Weight Gain During Pregnancy, and Age.</li>
+    <li><strong>Tuned Decision Tree:</strong> Optimized using GridSearchCV, with root features like Genetic Markers, Autoantibodies, and Family History.</li>
+  </ul>
+
+  <p><strong>Default Trees</strong> achieved a moderate performance:</p>
+  <ul>
+    <li><strong>Accuracy:</strong> 54.5%</li>
+    <li><strong>F1 Macro:</strong> 0.47</li>
+    <li><strong>F1 Weighted:</strong> 0.47</li>
+  </ul>
+  <p>Despite simplicity, these trees showed clear class separability for some conditions, but struggled on others due to lack of parameter constraints.</p>
+
+  <p><strong>Tuned Trees</strong> demonstrated significantly better performance:</p>
+  <ul>
+    <li><strong>Accuracy:</strong> 88.7%</li>
+    <li><strong>F1 Macro & Weighted:</strong> 0.89</li>
+  </ul>
+  <p>Hyperparameter tuning improved generalization, precision, and recall across nearly all classes.</p>
+
+  <h3>Visual Insights</h3>
+  <ul>
+    <li>Confusion matrices highlight that <strong>Tuned Trees</strong> better capture class boundaries and minimize misclassifications.</li>
+    <li>The <strong>Genetic Markers</strong> root performed slightly better than other tuned roots like Autoantibodies and Family History.</li>
+    <li>Default models tended to misclassify certain classes like Class 1 and Class 9 significantly more.</li>
+  </ul>
+
+  <h3>What We Learned</h3>
+  <ul>
+    <li>Decision Trees are highly interpretable and useful for healthcare-related predictions.</li>
+    <li>Root feature selection and hyperparameter tuning play a critical role in model performance.</li>
+    <li>Tuned trees are more reliable and robust, especially for high-dimensional medical datasets.</li>
+  </ul>
+
+  <h3>Final Takeaways</h3>
+  <p>
+    Decision Trees offer a powerful balance between interpretability and accuracy when carefully tuned.
+    In our diabetes prediction task, tuning dramatically improved accuracy from <strong>54.5%</strong> to <strong>88.7%</strong>.
+    This proves that even simple algorithms can produce excellent results with proper preprocessing and optimization.
+  </p>
+</div>
+
+
+
+
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

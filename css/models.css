@@ -48,3 +48,86 @@ h2 {
 .model-list li:hover {
     background: #C69C72;
 }
+/* Two-column layout */
+.model-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 30px;
+}
+
+/* Each column for model types */
+.model-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+.model-column h3 {
+    font-size: 22px;
+    color: #4B1C1C;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.train-test-info {
+    background-color: #FAF4EF;
+    padding: 50px 20px;
+    margin-top: 50px;
+    border-top: 2px solid #C69C72;
+}
+
+.train-test-info h2 {
+    text-align: center;
+    color: #6D2323;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.train-test-info p {
+    text-align: center;
+    font-size: 16px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    color: #444;
+}
+
+.split-box {
+    background-color: #fff;
+    padding: 20px 30px;
+    margin: 20px auto;
+    border-left: 5px solid #C69C72;
+    border-radius: 8px;
+    max-width: 900px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.split-box h3 {
+    color: #A31D1D;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.split-box ul {
+    padding-left: 20px;
+    line-height: 1.7;
+}
+
+.split-box code {
+    background-color: #eee;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.note {
+    font-size: 14px;
+    font-style: italic;
+    color: #666;
+    margin-top: 15px;
+}
+
+

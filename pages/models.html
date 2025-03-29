@@ -33,17 +33,63 @@
 
     <!-- Models List Section -->
     <section class="content-section">
-        <div class="container">
-            <h2>Implemented Models</h2>
-            <p>Select a model below to explore its implementation:</p>
+        <!-- Split layout for supervised and unsupervised -->
+<div class="model-columns">
+    <!-- Supervised -->
+    <div class="model-column">
+        <h3>Supervised Learning</h3>
+        <ul class="model-list">
+            <li><a href="naivebayes.html">Naive Bayes</a></li>
+            <li><a href="decisiontree.html">Decision Tree</a></li>
+            <li><a href="regression.html">Logistic Regression</a></li>
+        </ul>
+    </div>
 
-            <ul class="model-list">
-                <li><a href="pca.html">Principal Component Analysis (PCA)</a></li>
-                <li><a href="clustering.html">Clustering</a></li>
-                <li><a href="arm.html">ARM</a></li>
-            </ul>
-        </div>
+    <!-- Unsupervised -->
+    <div class="model-column">
+        <h3>Unsupervised Learning</h3>
+        <ul class="model-list">
+            <li><a href="pca.html">Principal Component Analysis (PCA)</a></li>
+            <li><a href="clustering.html">Clustering</a></li>
+            <li><a href="arm.html">Association Rule Mining (ARM)</a></li>
+        </ul>
+    </div>
+</div>
+
     </section>
+<!-- Train-Test Split Section -->
+<section class="train-test-info">
+    <div class="container">
+      <h2>Train-Test Split Information</h2>
+      <p>
+        Creating a disjoint train-test split is a crucial step in machine learning. It helps ensure that the model learns from one part of the data and is evaluated on unseen data, which improves generalization and reduces overfitting.
+      </p>
+  
+      <div class="split-box">
+        <h3>General Strategy</h3>
+        <ul>
+          <li><strong>Train Set:</strong> 80% of the data (used to train the model)</li>
+          <li><strong>Test Set:</strong> 20% of the data (used to evaluate the model)</li>
+          <li><strong>Stratified Sampling:</strong> Used where applicable to preserve label distribution.</li>
+          <li><strong>Reproducibility:</strong> A fixed <code>random_state</code> ensures consistent results.</li>
+        </ul>
+      </div>
+  
+      <div class="split-box">
+        <h3>Algorithm-wise Configuration</h3>
+        <ul>
+          <li><strong>Naïve Bayes:</strong> Used an 80-20 stratified split. The same split was used across all three NB types—Gaussian, Multinomial, and Bernoulli.</li>
+          <li><strong>Decision Tree:</strong> Split was kept consistent across default and tuned models to allow accurate performance comparison.</li>
+          <li><strong>Logistic Regression:</strong> Used the same dataset and split as Decision Tree to ensure uniform preprocessing and fair evaluation.</li>
+          <li><strong>Ensemble Models:</strong> (Planned) Will follow 80-20 stratified split for consistency.</li>
+          <li><strong>Support Vector Machines (SVM):</strong> (Planned) Will follow the same 80-20 rule.</li>
+        </ul>
+        <p class="note">This section will be updated dynamically if any model uses a different splitting approach.</p>
+      </div>
+    </div>
+  </section>
+  
+  
 
 </body>
 </html>

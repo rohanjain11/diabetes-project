@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Naïve Bayes Analysis</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/naivebayes.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">Diabetes Project</a>
+      <ul class="nav-links">
+        <li><a href="introduction.html">Introduction</a></li>
+        <li><a href="data_prep.html">Data Prep & EDA</a></li>
+        <li><a href="models.html">ML Models</a></li>
+        <li><a href="pca.html">PCA</a></li>
+        <li><a href="clustering.html">Clustering</a></li>
+        <li><a href="arm.html">ARM</a></li>
+        <li><a href="naivebayes.html" class="active">Naïve Bayes</a></li>
+        <li><a href="decisiontree.html">Decision Tree</a></li>
+        <li><a href="regression.html" >Regression</a></li>
+        <li><a href="conclusions.html">Conclusions</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Naïve Bayes Classification</h1>
+      <p>Exploring Gaussian, Multinomial, and Bernoulli Naïve Bayes Models</p>
+    </div>
+  </header>
+
+  <section class="content-section">
+    <div class="container">
+
+      <!-- Overview -->
+      <div class="info-box">
+        <h2>Overview of Naïve Bayes</h2>
+        <p>Naïve Bayes is a probabilistic machine learning algorithm based on Bayes’ Theorem. It assumes independence between features and is highly efficient for classification tasks.</p>
+        <ul>
+          <li><strong>GaussianNB</strong>: Assumes features follow a normal distribution.</li>
+          <li><strong>MultinomialNB</strong>: Designed for count data (like text classification).</li>
+          <li><strong>BernoulliNB</strong>: Best for binary data (0 or 1).</li>
+        </ul>
+        <p>Smoothing (Laplace) is used to handle zero-frequency issues, especially important for MultinomialNB.</p>
+        <img src="../images/naivebayes.png" alt="Decision Tree Diagram" onclick="openModal(this)">
+      </div>
+
+      <div class="info-box">
+        <h2>GitHub Repository</h2>
+        <a href="" class="github-link" target="_blank">
+          View Naïve Bayes Code on GitHub ↗
+        </a>
+      </div>
+      <!-- Dataset Used -->
+      <div class="info-box">
+        <h2>Dataset Used</h2>
+        <p>The cleaned diabetes dataset was used for training and testing Naïve Bayes models.</p>
+        <img src="../images/cleaned_data.png" alt="Cleaned Data Preview" onclick="openModal(this)">
+        <a href="../data/diabetes_cleaned.csv" download class="download-btn">Download Cleaned Dataset</a>
+      </div>
+
+      <!-- Preprocessing Section -->
+<div class="info-box">
+    <h2>Data Preprocessing Steps</h2>
+  
+    <h3>Step 1: Load and Explore the Data</h3>
+    <p>Before applying the Naïve Bayes classification models, the cleaned dataset is loaded using <code>pandas</code>. We explore its structure, data types, and check for missing values or categorical columns.</p>
+    <img src="../images/nb_step1_load.png" alt="Step 1: Load Dataset" onclick="openModal(this)">
+  
+    <h3>Step 2: Encode Categorical Features</h3>
+    <p>All categorical features are encoded using <strong>LabelEncoder</strong> to convert them into numerical values, making them compatible with Naïve Bayes classifiers.</p>
+    <img src="../images/nb_step2_encode.png" alt="Step 2: Encode Categorical Variables" onclick="openModal(this)">
+  
+    <h3>Step 3: Define Features (X) and Target (y)</h3>
+    <p>We separate the independent features <code>X</code> from the target variable <code>y</code> which indicates diabetes classification. This setup is essential for model training.</p>
+  
+    <h3>Step 4: Train-Test Split</h3>
+    <p>The dataset is split into training and testing sets to evaluate the model’s performance. We use an 80/20 split and fix the random state for reproducibility.</p>
+    <ul>
+      <li><strong>Training Data:</strong> 80%</li>
+      <li><strong>Testing Data:</strong> 20%</li>
+      <li>Random state ensures reproducibility.</li>
+    </ul>
+  
+    <h4>Training Data Preview</h4>
+    <p>Sample of the training data used to train the model:</p>
+    <img src="../images/naivebayes_train_sample.png" alt="Training Data Sample" onclick="openModal(this)">
+    <a href="../data/naivebayes_train_sample.csv" download class="download-btn">Download Training Sample CSV</a>
+  
+    <h4>Testing Data Preview</h4>
+    <p>Sample of the testing data used to evaluate model accuracy:</p>
+    <img src="../images/naivebayes_test_sample.png" alt="Testing Data Sample" onclick="openModal(this)">
+    <a href="../data/naivebayes_test_sample.csv" download class="download-btn">Download Testing Sample CSV</a>
+  
+  
+    <h3>Step 5: Convert Data for Different Naïve Bayes Models</h3>
+    <p>Different Naïve Bayes models have specific input requirements:</p>
+    <ul>
+      <li><strong>GaussianNB:</strong> Works with continuous features. Data is normalized using <code>StandardScaler</code>.</li>
+      <li><strong>MultinomialNB:</strong> Requires integer (count-based) features. Data is converted to integer format.</li>
+      <li><strong>BernoulliNB:</strong> Requires binary data (0/1). We apply binarization to meet this requirement.</li>
+    </ul>
+    <p>This step ensures the input is correctly formatted for each algorithm.</p>
+    <img src="../images/nb_step5_transformations.png" alt="Data Transformation for NB Models" onclick="openModal(this)">
+  </div>
+  
+    
+    
+
+      <!-- Model Results -->
+      <div class="info-box">
+        <h2>Naïve Bayes Results</h2>
+        <p>Three models were trained and compared:</p>
+        <img src="../images/nb_barplot.png" alt="Accuracy Comparison" onclick="openModal(this)">
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Accuracy</th>
+              <th>Macro F1-Score</th>
+              <th>Weighted F1-Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GaussianNB</td>
+              <td>82%</td>
+              <td>0.82</td>
+              <td>0.82</td>
+            </tr>
+            <tr>
+              <td>MultinomialNB</td>
+              <td>55%</td>
+              <td>0.55</td>
+              <td>0.55</td>
+            </tr>
+            <tr>
+              <td>BernoulliNB</td>
+              <td>9%</td>
+              <td>0.09</td>
+              <td>0.09</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Visuals -->
+      <div class="info-box">
+        <h2>Confusion Matrices</h2>
+        <img src="../images/confusion_gaussian.png" alt="Gaussian Confusion Matrix" onclick="openModal(this)">
+        <img src="../images/confusion_multinomial.png" alt="Multinomial Confusion Matrix" onclick="openModal(this)">
+        <img src="../images/confusion_bernoulli.png" alt="Bernoulli Confusion Matrix" onclick="openModal(this)">
+      </div>
+
+      <div class="info-box">
+        <h2>Results and Conclusion</h2>
+      
+        <h3>Summary of Naïve Bayes Performance</h3>
+        <p>We evaluated three variants of the Naïve Bayes classifier on the diabetes dataset:</p>
+        <ul>
+          <li><strong>GaussianNB</strong> – Assumes features follow a normal distribution (ideal for continuous values).</li>
+          <li><strong>MultinomialNB</strong> – Best for count-based features like word frequency.</li>
+          <li><strong>BernoulliNB</strong> – Designed for binary features (0/1).</li>
+        </ul>
+      
+        <h3>Comparative Results</h3>
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Accuracy</th>
+              <th>F1 Macro</th>
+              <th>F1 Weighted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>GaussianNB</td><td>82%</td><td>0.82</td><td>0.82</td></tr>
+            <tr><td>MultinomialNB</td><td>55%</td><td>0.55</td><td>0.55</td></tr>
+            <tr><td>BernoulliNB</td><td>9%</td><td>0.09</td><td>0.09</td></tr>
+          </tbody>
+        </table>
+      
+        <h3>Visual Insights from Confusion Matrices</h3>
+        <ul>
+          <li><strong>GaussianNB</strong> demonstrated clear class separation and minimal misclassification.</li>
+          <li><strong>MultinomialNB</strong> showed overlap in mid-range classes due to non-count-based input.</li>
+          <li><strong>BernoulliNB</strong> misclassified almost all classes — highlighting binary feature limitations for this dataset.</li>
+        </ul>
+      
+        <h3>What We Learned</h3>
+        <ul>
+          <li><strong>Data preparation matters</strong> — GaussianNB excelled because the dataset had continuous features.</li>
+          <li>MultinomialNB can be useful only when features represent actual counts (e.g., word frequencies).</li>
+          <li>BernoulliNB underperformed due to its binary nature being unsuitable for multi-class, multi-featured health datasets.</li>
+        </ul>
+      
+        <h3>Final Takeaways</h3>
+        <p>
+          Among the three, <strong>Gaussian Naïve Bayes</strong> was the most suitable and effective for diabetes classification.
+          This emphasizes the importance of selecting the right model based on feature distribution and dataset characteristics.
+          For healthcare datasets with continuous variables, GaussianNB is both accurate and computationally efficient.
+        </p>
+      </div>
+      
+
+
+    </div>
+  </section>
+
+  <!-- Full-Screen Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

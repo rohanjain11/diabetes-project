@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Regression Analysis</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/regression.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">Diabetes Project</a>
+      <ul class="nav-links">
+        <li><a href="introduction.html">Introduction</a></li>
+        <li><a href="data_prep.html">Data Prep & EDA</a></li>
+        <li><a href="models.html">ML Models</a></li>
+        <li><a href="pca.html">PCA</a></li>
+        <li><a href="clustering.html">Clustering</a></li>
+        <li><a href="arm.html">ARM</a></li>
+        <li><a href="naivebayes.html">Naïve Bayes</a></li>
+        <li><a href="decisiontree.html">Decision Tree</a></li>
+        <li><a href="regression.html" class="active">Regression</a></li>
+        <li><a href="conclusions.html">Conclusions</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Regression Models</h1>
+      <p>Understanding and Comparing Logistic Regression and Multinomial Naïve Bayes</p>
+    </div>
+  </header>
+
+  <section class="content-section">
+    <div class="container">
+
+      <div class="info-box">
+        <h2>Concepts of Regression</h2>
+
+        <h3>(a) What is Linear Regression?</h3>
+        <p>Linear regression is a supervised learning algorithm that models the linear relationship between independent variables and a continuous target variable. It fits the best line through data points to predict future outcomes.</p>
+
+        <h3>(b) What is Logistic Regression?</h3>
+        <p>Logistic regression is used when the target variable is categorical (often binary). It models the probability that a sample belongs to a particular class using the Sigmoid function.</p>
+
+        <h3>(c) How are They Similar and Different?</h3>
+        <p>Both are supervised and involve linear combinations of inputs. The key difference is in their output: linear regression predicts continuous values, while logistic regression predicts probabilities for classification.</p>
+
+        <h3>(d) Does Logistic Regression Use the Sigmoid Function?</h3>
+        <p>Yes. The Sigmoid function squashes the linear combination of inputs into a range between 0 and 1, representing probability for classification.</p>
+
+        <h3>(e) How is Maximum Likelihood Related to Logistic Regression?</h3>
+        <p>Logistic regression uses Maximum Likelihood Estimation (MLE) to find the parameters (weights) that best fit the data. MLE maximizes the likelihood that the model correctly predicts class labels.</p>
+        <img src="../images/regression.png" alt="Decision Tree Diagram" onclick="openModal(this)">
+      </div>
+    </div>
+    <div class="info-box">
+      <h2>GitHub Repository</h2>
+      <a href="" class="github-link" target="_blank">
+        View Regression Code on GitHub ↗
+      </a>
+    </div>
+      <div class="info-box">
+        <h2>Dataset Used</h2>
+        <p>The cleaned diabetes dataset was used for training and testing Naïve Bayes models.</p>
+        <img src="../images/cleaned_data.png" alt="Cleaned Data Preview" onclick="openModal(this)">
+        <a href="../data/diabetes_cleaned.csv" download class="download-btn">Download Cleaned Dataset</a>
+      
+
+            <h2>Data Source for Logistic Regression</h2>
+            <p>
+              For Regression modeling, we reused the cleaned and encoded dataset originally prepared for the Decision Tree model 
+              (<code>dt_prepared.csv</code>). This dataset was already preprocessed with categorical features encoded, missing values handled, and the 
+              target column labeled appropriately. Reusing this file ensured consistency across our models, saved time, and allowed for a 
+              direct comparison of model performance using the same input structure.
+            </p>
+          
+        <h3>Train-Test Split</h3>
+        <p>We split the dataset using an 80/20 ratio:</p>
+        <ul>
+          <li><strong>Training Set:</strong> 80%</li>
+          <li><strong>Testing Set:</strong> 20%</li>
+        </ul>
+        <img src="../images/regression_train_sample.png" alt="Train Sample" onclick="openModal(this)">
+        <a href="../data/regression_train_data.csv" download class="download-btn">Download Train Sample</a>
+
+        <img src="../images/regression_test_sample.png" alt="Test Sample" onclick="openModal(this)">
+        <a href="../data/regression_test_data.csv" download class="download-btn">Download Test Sample</a>
+      </div>
+
+      <div class="info-box">
+        <h2>Model Comparison</h2>
+
+   
+    <h3>Logistic Regression vs Multinomial Naïve Bayes</h3>
+    <p>Both models were evaluated using confusion matrices and classification reports to compare performance.</p>
+  
+    <h4>Logistic Regression</h4>
+    <ul>
+      <li><strong>Accuracy:</strong> 70.34%</li>
+      <li>Performed better across most classes with higher precision and recall.</li>
+      <li>Example: Class 4 and Class 12 had precision and recall scores around <strong>0.95</strong> and <strong>0.83</strong>.</li>
+      <li>Produced more stable and consistent predictions.</li>
+    </ul>
+    <img src="../images/confusion_logreg.png" alt="Logistic Regression Confusion Matrix" onclick="openModal(this)">
+  
+    <h4>Multinomial Naïve Bayes</h4>
+    <ul>
+      <li><strong>Accuracy:</strong> 54.82%</li>
+      <li>Lower recall and precision across many target labels.</li>
+      <li>Example: Classes like 0, 1, and 8 had f1-scores between <strong>0.45</strong> and <strong>0.52</strong>.</li>
+      <li>Struggled with the structure of this numeric tabular dataset.</li>
+    </ul>
+    <img src="../images/confusion_mnb.png" alt="Multinomial NB Confusion Matrix" onclick="openModal(this)">
+  
+    <h3>Insights</h3>
+    <ul>
+      <li>Logistic Regression is better suited for datasets with numeric, scaled features and works well for linear separability.</li>
+      <li>Multinomial Naïve Bayes performs well with categorical count data like text but underperforms on this kind of data.</li>
+      <li>Proper feature scaling and encoding significantly impacts logistic regression's performance.</li>
+    </ul>
+  
+    <h3>Conclusion</h3>
+    <p>
+      From the confusion matrices and accuracy scores, it's clear that <strong>Logistic Regression</strong> handles the data more effectively than <strong>Multinomial Naïve Bayes</strong>. 
+      Logistic regression’s higher precision and recall highlight its ability to model relationships better for multiclass classification tasks.
+      We learned that choosing a model aligned with the feature type is essential—Logistic Regression shines in numeric datasets, while Multinomial NB is more tailored to discrete, count-based inputs.
+    </p>
+
+
+  
+
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
