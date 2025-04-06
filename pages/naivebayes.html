@@ -39,17 +39,39 @@
     <div class="container">
 
       <!-- Overview -->
-      <div class="info-box">
-        <h2>Overview of Naïve Bayes</h2>
-        <p>Naïve Bayes is a probabilistic machine learning algorithm based on Bayes’ Theorem. It assumes independence between features and is highly efficient for classification tasks.</p>
-        <ul>
-          <li><strong>GaussianNB</strong>: Assumes features follow a normal distribution.</li>
-          <li><strong>MultinomialNB</strong>: Designed for count data (like text classification).</li>
-          <li><strong>BernoulliNB</strong>: Best for binary data (0 or 1).</li>
-        </ul>
-        <p>Smoothing (Laplace) is used to handle zero-frequency issues, especially important for MultinomialNB.</p>
-        <img src="../images/naivebayes.png" alt="Decision Tree Diagram" onclick="openModal(this)">
-      </div>
+     <!-- Overview -->
+<div class="info-box">
+  <h2>Overview of Naïve Bayes</h2>
+
+  <p>
+    Naïve Bayes is a probabilistic classification algorithm based on <strong>Bayes’ Theorem</strong>, which describes the probability of an event based on prior knowledge of conditions related to the event. The algorithm assumes that the input features are conditionally independent given the class label — an assumption that simplifies computation and makes the model highly efficient.
+  </p>
+
+  <img src="../images/naivebayes.png" alt="Naive Bayes Visualization" onclick="openModal(this)">
+
+  <h3>Types of Naïve Bayes Algorithms</h3>
+  <ul>
+    <li>
+      <strong>Gaussian Naïve Bayes:</strong> This variant assumes that the features follow a normal (Gaussian) distribution. It is ideal for continuous numerical features, which are common in medical or sensor-based datasets. For example, predicting diabetes based on blood sugar level or insulin concentration fits well with GaussianNB.
+    </li>
+    <li>
+      <strong>Multinomial Naïve Bayes:</strong> This model is designed for discrete features such as counts or frequencies. It's commonly used in natural language processing tasks like document classification. MultinomialNB calculates probabilities using observed frequencies of features per class and works best when inputs are non-negative integers.
+    </li>
+    <li>
+      <strong>Bernoulli Naïve Bayes:</strong> This variant is built for binary or boolean features (0 or 1). It is often used in tasks like spam detection, where features are either present or absent. BernoulliNB evaluates each feature as either occurring or not occurring in a sample and handles binary vectors well.
+    </li>
+  </ul>
+
+  <h3>Why Smoothing is Needed (Laplace Smoothing)</h3>
+  <p>
+    In both MultinomialNB and BernoulliNB, there may be cases where a class does not contain a particular feature — leading to zero probability and complete elimination of that class prediction. To solve this, we apply <strong>Laplace Smoothing</strong> (also known as additive smoothing), which adds a small constant (typically 1) to all feature counts. This prevents zero probabilities and ensures all classes remain viable during prediction.
+  </p>
+
+  <p>
+    In summary, Naïve Bayes offers a simple yet powerful baseline for classification. Its different variants can be chosen based on the type of data — <strong>Gaussian</strong> for continuous values, <strong>Multinomial</strong> for count data, and <strong>Bernoulli</strong> for binary data.
+  </p>
+</div>
+
 
       <div class="info-box">
         <h2>GitHub Repository</h2>

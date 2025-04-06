@@ -39,17 +39,49 @@
   <section class="content-section">
     <div class="container">
 
-      <!-- Intro -->
       <div class="info-box">
         <h2>What is a Decision Tree?</h2>
-        <p>A Decision Tree is a supervised learning algorithm that splits data based on feature conditions. It’s easy to interpret and visualizes decisions in a tree-like structure.</p>
-        <ul>
-          <li><strong>Root Node:</strong> First decision point</li>
-          <li><strong>Internal Nodes:</strong> Feature splits</li>
-          <li><strong>Leaf Nodes:</strong> Final prediction classes</li>
-        </ul>
+      
+        <p>
+          A <strong>Decision Tree</strong> is a supervised learning algorithm used for both classification and regression tasks. It works by recursively splitting the dataset into smaller subsets based on specific feature conditions that lead to the most optimal separation of classes. The model forms a flowchart-like structure that is both visual and interpretable.
+        </p>
+      
         <img src="../images/decisiontree.png" alt="Decision Tree Diagram" onclick="openModal(this)">
+      
+        <h3>Structure of a Decision Tree</h3>
+        <ul>
+          <li><strong>Root Node:</strong> The starting point of the tree, where the first feature is chosen to split the dataset.</li>
+          <li><strong>Internal Nodes:</strong> Represent conditions or decisions based on feature values (e.g., Is Blood Glucose &gt; 140?).</li>
+          <li><strong>Leaf Nodes:</strong> Final outputs or class predictions (e.g., "High Diabetes Risk").</li>
+        </ul>
+      
+        <h3>How Does It Make Predictions?</h3>
+        <p>
+          The model is trained by evaluating all features and selecting the best one to split on, based on how well it separates the target classes. The process continues recursively, building a tree where each path from root to leaf represents a decision rule. To make a prediction, the model follows the feature values of a new instance through the tree until it reaches a leaf node.
+        </p>
+      
+        <h3>How Does It Choose Splits? (Gini, Entropy, and Information Gain)</h3>
+        <ul>
+          <li>
+            <strong>Gini Index:</strong> Measures the impurity of a node. A Gini score of 0 means all elements belong to a single class. The algorithm prefers features that result in child nodes with low Gini impurity.
+          </li>
+          <li>
+            <strong>Entropy:</strong> A measure from information theory that quantifies the randomness (or disorder) in a set. High entropy indicates more mixed classes. The goal is to reduce entropy with each split.
+          </li>
+          <li>
+            <strong>Information Gain:</strong> Calculated as the reduction in entropy after a split. Features with higher information gain are more useful for classification and are therefore chosen earlier in the tree.
+          </li>
+        </ul>
+      
+        <p>
+          During training, Decision Trees compare the reduction in Gini or Entropy for every possible split and choose the one that maximizes purity or minimizes uncertainty. These mathematical metrics ensure that each branch leads to more homogeneous subgroups.
+        </p>
+      
+        <p>
+          In this project, both Gini and Entropy were used to train trees with different settings, and the performance was compared to identify the best combination of features and criteria.
+        </p>
       </div>
+      
       <!-- GitHub -->
       <div class="info-box">
         <h2>GitHub Repository</h2>
