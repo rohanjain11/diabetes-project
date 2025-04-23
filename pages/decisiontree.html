@@ -228,48 +228,66 @@
   <h2>Results and Conclusion</h2>
 
   <h3>Summary of Decision Tree Performance</h3>
-  <p>We implemented two types of Decision Trees:</p>
+  <p>We implemented and compared two types of Decision Tree models to classify diabetes risk levels based on patient data:</p>
   <ul>
-    <li><strong>Default Decision Tree:</strong> Using root features like Blood Glucose, Weight Gain During Pregnancy, and Age.</li>
-    <li><strong>Tuned Decision Tree:</strong> Optimized using GridSearchCV, with root features like Genetic Markers, Autoantibodies, and Family History.</li>
+    <li><strong>Default Decision Tree:</strong> Trained without tuning, using features like Blood Glucose, Weight Gain During Pregnancy, and Age as root nodes.</li>
+    <li><strong>Tuned Decision Tree:</strong> Trained using GridSearchCV to optimize hyperparameters (e.g., <code>max_depth=6</code>, <code>criterion='entropy'</code>, <code>min_samples_split=4</code>) with key root features like Genetic Markers, Autoantibodies, and Family History.</li>
   </ul>
 
-  <p><strong>Default Trees</strong> achieved a moderate performance:</p>
+  <p><strong>Default Trees</strong> produced only moderate performance due to their basic structure:</p>
   <ul>
     <li><strong>Accuracy:</strong> 54.5%</li>
     <li><strong>F1 Macro:</strong> 0.47</li>
     <li><strong>F1 Weighted:</strong> 0.47</li>
   </ul>
-  <p>Despite simplicity, these trees showed clear class separability for some conditions, but struggled on others due to lack of parameter constraints.</p>
+  <p>These models captured some classes well (e.g., Class 4 and 12), but performed poorly on others like Class 1 and 9. Their simplicity often led to underfitting.</p>
 
-  <p><strong>Tuned Trees</strong> demonstrated significantly better performance:</p>
+  <p><strong>Tuned Trees</strong> significantly improved classification performance:</p>
   <ul>
     <li><strong>Accuracy:</strong> 88.7%</li>
-    <li><strong>F1 Macro & Weighted:</strong> 0.89</li>
+    <li><strong>F1 Macro:</strong> 0.89</li>
+    <li><strong>F1 Weighted:</strong> 0.89</li>
   </ul>
-  <p>Hyperparameter tuning improved generalization, precision, and recall across nearly all classes.</p>
+  <p>By limiting tree depth and adjusting split criteria, tuned trees provided more generalizable and accurate predictions across all 13 diabetes categories.</p>
 
   <h3>Visual Insights</h3>
   <ul>
-    <li>Confusion matrices highlight that <strong>Tuned Trees</strong> better capture class boundaries and minimize misclassifications.</li>
-    <li>The <strong>Genetic Markers</strong> root performed slightly better than other tuned roots like Autoantibodies and Family History.</li>
-    <li>Default models tended to misclassify certain classes like Class 1 and Class 9 significantly more.</li>
+    <li><strong>Confusion matrices</strong> showed the tuned models had far fewer misclassifications and clearer diagonal dominance.</li>
+    <li>The tuned tree rooted in <strong>Genetic Markers</strong> slightly outperformed trees rooted in Autoantibodies and Family History.</li>
+    <li>Default trees, though interpretable, suffered from incorrect predictions due to uncontrolled depth and overfitting on irrelevant splits.</li>
   </ul>
 
-  <h3>What We Learned</h3>
+  <h3>What We Learned (Technical)</h3>
   <ul>
-    <li>Decision Trees are highly interpretable and useful for healthcare-related predictions.</li>
-    <li>Root feature selection and hyperparameter tuning play a critical role in model performance.</li>
-    <li>Tuned trees are more reliable and robust, especially for high-dimensional medical datasets.</li>
+    <li>Decision Trees are inherently interpretable—every split reflects a rule that can be visualized and explained.</li>
+    <li><strong>Gini Index</strong> and <strong>Entropy</strong> were tested for split criteria; entropy (used in tuning) measures information gain more granularly, leading to better splits.</li>
+    <li><strong>Information Gain</strong> helped the model select features that maximized class purity after each split.</li>
+    <li>Hyperparameter tuning is essential. Without constraints, decision trees tend to overfit, especially in high-dimensional datasets like healthcare records.</li>
   </ul>
+
+  <h3>What We Learned (Non-Technical)</h3>
+  <p>
+    In simple terms, when the model was left to make decisions on its own (default tree), it didn’t always choose the best questions. 
+    But when we helped guide its behavior (tuned tree), it became much smarter at spotting patterns in patient data. 
+    Features like genetic history and biomarkers turned out to be more helpful than others, and the model could now predict a patient’s diabetes risk more accurately.
+    This means healthcare professionals could trust these predictions more for patient assessment.
+  </p>
 
   <h3>Final Takeaways</h3>
   <p>
-    Decision Trees offer a powerful balance between interpretability and accuracy when carefully tuned.
-    In our diabetes prediction task, tuning dramatically improved accuracy from <strong>54.5%</strong> to <strong>88.7%</strong>.
-    This proves that even simple algorithms can produce excellent results with proper preprocessing and optimization.
+    Decision Trees provide a balance of simplicity and effectiveness, especially when combined with tuning. Our analysis showed that:
+  </p>
+  <ul>
+    <li>Tuning the Decision Tree model boosted accuracy from <strong>54.5%</strong> to <strong>88.7%</strong>.</li>
+    <li>Choosing the right root feature (e.g., Genetic Markers) contributed to better early splits and more accurate outcomes.</li>
+    <li>With visual interpretability, clinicians can understand why a prediction was made—critical for transparent AI in healthcare.</li>
+  </ul>
+  <p>
+    This study highlights the importance of optimizing even simple algorithms to unlock their full potential—making them useful, trustworthy, and insightful for healthcare analytics.
   </p>
 </div>
+
+
 
 
 

@@ -189,11 +189,11 @@
         <h2>Results and Conclusion</h2>
       
         <h3>Summary of Naïve Bayes Performance</h3>
-        <p>We evaluated three variants of the Naïve Bayes classifier on the diabetes dataset:</p>
+        <p>We implemented and compared three variants of the Naïve Bayes classifier on a multi-class diabetes dataset to understand their strengths, weaknesses, and suitability for real-world medical data:</p>
         <ul>
-          <li><strong>GaussianNB</strong> – Assumes features follow a normal distribution (ideal for continuous values).</li>
-          <li><strong>MultinomialNB</strong> – Best for count-based features like word frequency.</li>
-          <li><strong>BernoulliNB</strong> – Designed for binary features (0/1).</li>
+          <li><strong>GaussianNB</strong> – Assumes the features follow a normal (Gaussian) distribution. Ideal for continuous numerical inputs such as glucose levels, insulin, and BMI.</li>
+          <li><strong>MultinomialNB</strong> – Best suited for discrete or count-based features like word frequencies. Requires non-negative integer features.</li>
+          <li><strong>BernoulliNB</strong> – Designed for binary (0 or 1) input data. Often used in text classification with presence/absence of words or in yes/no surveys.</li>
         </ul>
       
         <h3>Comparative Results</h3>
@@ -215,23 +215,36 @@
       
         <h3>Visual Insights from Confusion Matrices</h3>
         <ul>
-          <li><strong>GaussianNB</strong> demonstrated clear class separation and minimal misclassification.</li>
-          <li><strong>MultinomialNB</strong> showed overlap in mid-range classes due to non-count-based input.</li>
-          <li><strong>BernoulliNB</strong> misclassified almost all classes — highlighting binary feature limitations for this dataset.</li>
+          <li><strong>GaussianNB</strong> demonstrated clear diagonal patterns in the confusion matrix, indicating correct classification across most classes. This shows its compatibility with normalized, continuous health features.</li>
+          <li><strong>MultinomialNB</strong> had more scattered misclassifications. The assumption of count-based inputs caused it to struggle on normalized values that weren’t actual frequency counts.</li>
+          <li><strong>BernoulliNB</strong> performed the worst. Most predictions were incorrect, and the model failed to capture class patterns due to the binarization step that oversimplified the dataset.</li>
         </ul>
       
         <h3>What We Learned</h3>
         <ul>
-          <li><strong>Data preparation matters</strong> — GaussianNB excelled because the dataset had continuous features.</li>
-          <li>MultinomialNB can be useful only when features represent actual counts (e.g., word frequencies).</li>
-          <li>BernoulliNB underperformed due to its binary nature being unsuitable for multi-class, multi-featured health datasets.</li>
+          <li><strong>Feature distribution and preprocessing are critical.</strong> GaussianNB succeeded because our diabetes dataset had numerical features that were standardized properly.</li>
+          <li><strong>Algorithm assumptions must match the data.</strong> MultinomialNB and BernoulliNB are effective only in specific contexts, like text classification or binary input tasks.</li>
+          <li><strong>Naïve Bayes models are lightweight but require careful input formatting.</strong> Without matching assumptions, their simplicity becomes a limitation.</li>
         </ul>
       
-        <h3>Final Takeaways</h3>
+        <h3>Final Takeaways (Technical)</h3>
         <p>
-          Among the three, <strong>Gaussian Naïve Bayes</strong> was the most suitable and effective for diabetes classification.
-          This emphasizes the importance of selecting the right model based on feature distribution and dataset characteristics.
-          For healthcare datasets with continuous variables, GaussianNB is both accurate and computationally efficient.
+          From a data science perspective, GaussianNB is highly efficient for large, continuous datasets where normal distribution is a fair assumption. Its simplicity and fast computation make it attractive for early-stage healthcare analytics.
+          However, MultinomialNB and BernoulliNB should be avoided unless the data naturally fits their requirements such as integer-based counts or binary inputs.
+          Overall, choosing the appropriate model based on the dataset’s nature led to significant performance differences, emphasizing the value of exploratory data analysis and understanding model constraints.
+        </p>
+      
+        <h3>Final Takeaways (Non-Technical)</h3>
+        <p>
+          In simpler terms, Gaussian Naïve Bayes gave the most accurate results because it works well with numbers like those in health records like blood sugar or insulin levels. 
+          The other two models expected different kinds of data (like word counts or yes/no questions), so they didn’t perform well. 
+          This tells us that even basic machine learning tools can be very useful if the data is prepared in the right way. 
+          Just like choosing the right medical test for a symptom, choosing the right model for the data makes all the difference.
+        </p>
+      
+        <h3>Broader Application</h3>
+        <p>
+          This comparison also shows how models like GaussianNB can be used in medical diagnostics where quick and interpretable predictions are needed. It’s not just about high accuracy, it’s about understanding the model’s assumptions and matching them with real-world data types for actionable outcomes in healthcare.
         </p>
       </div>
       

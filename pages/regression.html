@@ -98,43 +98,59 @@
 
       <div class="info-box">
         <h2>Model Comparison</h2>
-
-   
-    <h3>Logistic Regression vs Multinomial Naïve Bayes</h3>
-    <p>Both models were evaluated using confusion matrices and classification reports to compare performance.</p>
-  
-    <h4>Logistic Regression</h4>
-    <ul>
-      <li><strong>Accuracy:</strong> 70.34%</li>
-      <li>Performed better across most classes with higher precision and recall.</li>
-      <li>Example: Class 4 and Class 12 had precision and recall scores around <strong>0.95</strong> and <strong>0.83</strong>.</li>
-      <li>Produced more stable and consistent predictions.</li>
-    </ul>
-    <img src="../images/confusion_logreg.png" alt="Logistic Regression Confusion Matrix" onclick="openModal(this)">
-  
-    <h4>Multinomial Naïve Bayes</h4>
-    <ul>
-      <li><strong>Accuracy:</strong> 54.82%</li>
-      <li>Lower recall and precision across many target labels.</li>
-      <li>Example: Classes like 0, 1, and 8 had f1-scores between <strong>0.45</strong> and <strong>0.52</strong>.</li>
-      <li>Struggled with the structure of this numeric tabular dataset.</li>
-    </ul>
-    <img src="../images/confusion_mnb.png" alt="Multinomial NB Confusion Matrix" onclick="openModal(this)">
-  
-    <h3>Insights</h3>
-    <ul>
-      <li>Logistic Regression is better suited for datasets with numeric, scaled features and works well for linear separability.</li>
-      <li>Multinomial Naïve Bayes performs well with categorical count data like text but underperforms on this kind of data.</li>
-      <li>Proper feature scaling and encoding significantly impacts logistic regression's performance.</li>
-    </ul>
-  
-    <h3>Conclusion</h3>
-    <p>
-      From the confusion matrices and accuracy scores, it's clear that <strong>Logistic Regression</strong> handles the data more effectively than <strong>Multinomial Naïve Bayes</strong>. 
-      Logistic regression’s higher precision and recall highlight its ability to model relationships better for multiclass classification tasks.
-      We learned that choosing a model aligned with the feature type is essential—Logistic Regression shines in numeric datasets, while Multinomial NB is more tailored to discrete, count-based inputs.
-    </p>
-
+      
+        <h3>Logistic Regression vs Multinomial Naïve Bayes</h3>
+        <p>We evaluated two classification models on a binary-labeled diabetes dataset to compare their effectiveness: Logistic Regression and Multinomial Naïve Bayes.</p>
+      
+        <h4>Logistic Regression</h4>
+        <ul>
+          <li><strong>Accuracy:</strong> 70.34%</li>
+          <li>Showed strong predictive power with higher precision and recall across most target classes.</li>
+          <li><strong>Class 4</strong> and <strong>Class 12</strong> stood out with precision and recall values reaching 0.95 and 0.83 respectively.</li>
+          <li>Worked well with the numeric and scaled features in the dataset, showing stable and consistent classification behavior.</li>
+        </ul>
+        <img src="../images/confusion_logreg.png" alt="Logistic Regression Confusion Matrix" onclick="openModal(this)">
+      
+        <h4>Multinomial Naïve Bayes</h4>
+        <ul>
+          <li><strong>Accuracy:</strong> 54.82%</li>
+          <li>Displayed lower performance with relatively poor precision and recall for several key classes.</li>
+          <li>For example, <strong>Classes 0, 1, and 8</strong> had f1-scores ranging from 0.45 to 0.52.</li>
+          <li>Struggled to classify the numeric and continuous features accurately, as it assumes count-based inputs.</li>
+        </ul>
+        <img src="../images/confusion_mnb.png" alt="Multinomial NB Confusion Matrix" onclick="openModal(this)">
+      
+        <h3>Insights</h3>
+        <ul>
+          <li><strong>Logistic Regression</strong> is more suitable for structured numeric datasets like the one used here.</li>
+          <li>It can model linear decision boundaries effectively and benefits significantly from properly scaled and encoded features.</li>
+          <li><strong>Multinomial Naïve Bayes</strong> is efficient and fast but relies on discrete feature distributions (e.g., word counts) and does not perform well with continuous or normalized features.</li>
+        </ul>
+      
+        <h3>What We Learned (Technical)</h3>
+        <ul>
+          <li>Logistic Regression's use of the Sigmoid function allows it to model class probabilities effectively.</li>
+          <li>It leverages Maximum Likelihood Estimation (MLE) to optimize parameters and decision boundaries.</li>
+          <li>Multinomial NB’s performance is limited when applied to continuous tabular data not designed for count-based logic.</li>
+          <li>Evaluation metrics such as accuracy, precision, recall, and f1-score reveal the depth of model performance beyond simple predictions.</li>
+        </ul>
+      
+        <h3>What We Learned (Non-Technical)</h3>
+        <p>
+          Logistic Regression acted more like a "smart guesser" that adjusts itself based on actual patient data and patterns. 
+          It gave predictions that matched reality better than Multinomial NB, which assumed our features were like "word counts"—a poor fit for health data.
+          This taught us that even a simple model like Logistic Regression can give dependable answers if the data is clean and well-prepared.
+          On the other hand, using the wrong model for the data type can lead to weaker and less trustworthy predictions.
+        </p>
+      
+        <h3>Final Takeaways</h3>
+        <p>
+          In our comparison, <strong>Logistic Regression</strong> emerged as the superior model for diabetes classification in this context, achieving a <strong>70.34% accuracy</strong> compared to <strong>54.82%</strong> from Multinomial Naïve Bayes.
+          This difference highlights the importance of aligning model choice with data characteristics—numerical models perform better on numerical data.
+          With simple architecture, interpretability, and stable results, Logistic Regression proves to be a practical and effective solution in health-related prediction tasks.
+        </p>
+      </div>
+      
 
   
 
