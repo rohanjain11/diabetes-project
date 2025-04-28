@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ensemble Learning Analysis</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/ensemble.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="container">
+    <a href="../index.html" class="logo">Diabetes Project</a>
+    <ul class="nav-links">
+      <li><a href="introduction.html">Introduction</a></li>
+      <li><a href="data_prep.html">Data Prep & EDA</a></li>
+      <li><a href="models.html">ML Models</a></li>
+      <li><a href="pca.html">PCA</a></li>
+      <li><a href="clustering.html">Clustering</a></li>
+      <li><a href="arm.html">ARM</a></li>
+      <li><a href="naivebayes.html">Naïve Bayes</a></li>
+      <li><a href="decisiontree.html">Decision Tree</a></li>
+      <li><a href="regression.html">Regression</a></li>
+      <li><a href="svm.html">SVM</a></li>
+      <li><a href="ensemble.html" class="active">Ensemble</a></li>
+      <li><a href="conclusions.html">Conclusions</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Ensemble Learning with Random Forest</h1>
+    <p>Combining Multiple Decision Trees for Robust Diabetes Prediction</p>
+  </div>
+</header>
+
+<section class="content-section">
+  <div class="container">
+
+    <!-- Overview of Ensemble Learning -->
+    <div class="info-box">
+      <h2>What is Ensemble Learning?</h2>
+      <p>Ensemble learning is a machine learning technique where multiple models are combined to produce a more accurate and stable prediction than a single model. Instead of relying on one decision, it aggregates the decisions of multiple models.</p>
+
+      <h3>Method Used: Random Forest</h3>
+      <p><strong>Random Forest</strong> is an ensemble method based on Decision Trees. It builds multiple trees and merges their results (through voting) to improve predictive performance and reduce overfitting.</p>
+
+      <img src="../images/ensemble_overview.png" alt="Ensemble Learning Overview" onclick="openModal(this)">
+
+      <h3>Why Random Forest for Diabetes Prediction?</h3>
+      <ul>
+        <li>Handles large feature spaces and multiclass classification well.</li>
+        <li>Reduces the risk of overfitting by averaging results from multiple trees.</li>
+        <li>Provides feature importance rankings, useful in healthcare datasets.</li>
+      </ul>
+    </div>
+
+    <!-- GitHub Link -->
+    <div class="info-box">
+      <h2>GitHub Repository</h2>
+      <a href="https://github.com/rohanjain11/diabetes-project/blob/main/Models%20ipynb/ensemble.ipynb" class="github-link" target="_blank">
+        View Ensemble Code on GitHub ↗
+      </a>
+    </div>
+
+    <!-- Data Preprocessing Section -->
+    <div class="info-box">
+      <h2>Data Preprocessing Steps</h2>
+
+      <h3>Step 1: Load and Explore the Data</h3>
+      <p>We loaded the pre-processed dataset (<code>dt_prepared.csv</code>) and explored the feature structure and target distributions.</p>
+      <img src="../images/svm_load_data.png" alt="Loaded Data Overview" onclick="openModal(this)">
+
+      <h3>Step 2: Train-Test Split</h3>
+      <p>The dataset was split into 80% for training and 20% for testing, ensuring stratified sampling to maintain class proportions.</p>
+
+      <h4>Training Data Preview</h4>
+      <img src="../images/ensemble_train_sample.png" alt="Training Data Sample" onclick="openModal(this)">
+      <a href="../data/ensemble_train_sample.csv" class="download-btn" download>Download Training Data CSV</a>
+
+      <h4>Testing Data Preview</h4>
+      <img src="../images/ensemble_test_sample.png" alt="Testing Data Sample" onclick="openModal(this)">
+      <a href="../data/ensemble_test_sample.csv" class="download-btn" download>Download Testing Data CSV</a>
+
+      <h4>Dataset Summary</h4>
+      <p>Total number of train & test samples in the dataset:</p>
+      <img src="../images/svm_dataset_summary.png" alt="Dataset Summary" onclick="openModal(this)">
+    </div>
+
+    <!-- Model and Results -->
+    <div class="info-box">
+      <h2>Model Results</h2>
+
+      <h3>Random Forest Performance</h3>
+      <ul>
+        <li><strong>Accuracy:</strong> 89.66%</li>
+        <li><strong>Macro Avg F1-Score:</strong> 0.90</li>
+        <li><strong>Weighted Avg F1-Score:</strong> 0.90</li>
+      </ul>
+
+      <img src="../images/ensemble_rf_cr.png" alt="">
+      <img src="../images/ensemble_rf_cm.png" alt="Random Forest Confusion Matrix" onclick="openModal(this)">
+
+      <h3>Classification Report Overview</h3>
+      <ul>
+        <li>High precision and recall for most classes (especially 0, 4, 5, and 10).</li>
+        <li>Classes 6, 7, and 9 had slightly lower precision and recall, indicating room for further optimization.</li>
+        <li>Very balanced performance across all diabetes categories.</li>
+      </ul>
+    </div>
+
+<!-- Final Results and Takeaways -->
+<div class="info-box">
+    <h2>Final Results and Conclusion</h2>
+  
+    <h3>Technical Insights</h3>
+    <ul>
+      <li><strong>Strong Performance:</strong> Random Forest achieved a high accuracy of approximately 90%, consistently performing well across multiple diabetes risk categories.</li>
+      <li><strong>Handling Complexity:</strong> The model handled large numbers of features and multi-class classification with ease, thanks to the ensemble nature of combining multiple weak decision trees.</li>
+      <li><strong>Overfitting Prevention:</strong> By using bootstrapped sampling (bagging) and random feature selection at each split, Random Forest minimized the risk of overfitting compared to a single Decision Tree.</li>
+      <li><strong>Interpretability:</strong> Although individual trees in the forest are complex, Random Forest allows insight into feature importance helping healthcare researchers understand which factors most influence predictions (e.g., blood glucose levels, genetic markers).</li>
+      <li><strong>Resilience to Noise:</strong> Outliers and noisy samples had less influence because multiple trees voted independently, making the final model more stable and reliable.</li>
+    </ul>
+  
+    <h3>Non-Technical Takeaways</h3>
+    <p>
+      Imagine asking hundreds of doctors for a diagnosis instead of just one that's the idea behind Random Forest. 
+      Each "doctor" (tree) gives a suggestion, and the Random Forest combines these opinions to make a better, smarter final decision. 
+      This teamwork approach means the model is less likely to make big mistakes and more confident in its predictions. 
+      Even if one tree guesses wrong, the others balance it out, leading to more accurate results for patients.
+    </p>
+  
+    <h3>Final Takeaway</h3>
+    <p>
+      Random Forest demonstrates that building a strong model doesn't mean relying on a single complex solution. 
+      Instead, combining multiple simpler models and averaging their outcomes leads to superior performance, 
+      especially in sensitive fields like healthcare. In this diabetes prediction project, Random Forest provided robustness, 
+      improved classification accuracy, and maintained transparency, making it a highly reliable tool for clinical data analysis.
+    </p>
+  </div>
+  
+
+<!-- Modal -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImg" />
+</div>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

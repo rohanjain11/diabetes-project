@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support Vector Machine (SVM) Analysis</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/svm.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">Diabetes Project</a>
+      <ul class="nav-links">
+        <li><a href="introduction.html">Introduction</a></li>
+        <li><a href="data_prep.html">Data Prep & EDA</a></li>
+        <li><a href="models.html">ML Models</a></li>
+        <li><a href="pca.html">PCA</a></li>
+        <li><a href="clustering.html">Clustering</a></li>
+        <li><a href="arm.html">ARM</a></li>
+        <li><a href="naivebayes.html">Naïve Bayes</a></li>
+        <li><a href="decisiontree.html">Decision Tree</a></li>
+        <li><a href="regression.html">Regression</a></li>
+        <li><a href="svm.html" class="active">SVM</a></li>
+        <li><a href="conclusions.html">Conclusions</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Support Vector Machine (SVM) Classification</h1>
+      <p>Kernel Comparison and Model Performance on Diabetes Dataset</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section class="content-section">
+    <div class="container">
+
+      <!-- SVM Overview -->
+      <div class="info-box">
+        <h2>What is an SVM?</h2>
+        <p><strong>Support Vector Machines (SVMs)</strong> are supervised learning models that find the best separating hyperplane between classes by maximizing the margin. They are powerful for both linear and non-linear classification problems.</p>
+        <img src="../images/svm_margin.png" alt="SVM Margin" onclick="openModal(this)">
+        
+        <h3>Why Are SVMs Linear Separators?</h3>
+        <p>SVMs try to maximize the distance (margin) between classes. When no kernel is used, SVM acts as a linear separator, cutting space with a flat hyperplane.</p>
+
+        <h3>Role of Dot Product and Kernels</h3>
+        <p>The dot product measures similarity between vectors. Kernels extend this idea by mapping data into higher dimensions without explicitly computing coordinates, making non-linear separation possible (kernel trick).</p>
+        <h3>Example: Mapping 2D Points Using a Polynomial Kernel (r=1, d=2)</h3>
+        <p>
+          Let's take an example where we have simple 2D data points (Feature 1, Feature 2). 
+          When we apply a <strong>polynomial kernel</strong> of degree 2, the data is mapped into a 3D space:
+          <ul>
+            <li>Feature 1 → Feature 1²</li>
+            <li>Feature 2 → Feature 2²</li>
+            <li>Feature Interaction → √2 × Feature1 × Feature2</li>
+          </ul>
+          This "casting" into higher dimensions makes it easier to separate points that were not linearly separable before.
+        </p>
+      
+        <h4>Original 2D Data</h4>
+        <img src="../images/svm_2d_original.png" alt="Original 2D Data" onclick="openModal(this)">
+      
+        <h4>Mapped into Higher Dimension (Polynomial Kernel)</h4>
+        <img src="../images/svm_3d_mapped.png" alt="Mapped into Higher Dimension" onclick="openModal(this)">
+      
+        <p>
+          As shown above, after transformation, the points that were hard to separate with a straight line can now be easily separated with a linear boundary in the new 3D space.
+          This is a fundamental idea behind how kernels empower SVMs to work with non-linear data.
+        </p>
+      </div>
+
+      <!-- GitHub Repository -->
+      <div class="info-box">
+        <h2>GitHub Repository</h2>
+        <a href="https://github.com/rohanjain11/diabetes-project/blob/main/Models%20ipynb/svm.ipynb" class="github-link" target="_blank">
+          View SVM Code on GitHub ↗
+        </a>
+      </div>
+
+      <div class="info-box">
+        <h2>Data Preprocessing Steps for SVM</h2>
+      
+        <h3>Step 1: Load and Explore the Data</h3>
+        <p>We loaded the prepared diabetes dataset (<code>dt_prepared.csv</code>) using <code>pandas</code>. The dataset had no missing values and included only numeric features suitable for SVM, so no encoding was required.</p>
+        <img src="../images/svm_load_data.png" alt="SVM Loaded Dataset Preview" onclick="openModal(this)">
+      
+        <h3>Step 2: Define Features (X) and Target (y)</h3>
+        <p>We separated the independent features <code>X</code> (patient health indicators) and the dependent variable <code>y</code> (diabetes risk category). The Target column represents 13 different diabetes-related classes.</p>
+      
+        <h3>Step 3: Train-Test Split</h3>
+        <p>The dataset was split into 80% training data and 20% testing data, while maintaining class balance using stratification. A fixed random state was set for reproducibility.</p>
+        <ul>
+          <li><strong>Training Data:</strong> 80%</li>
+          <li><strong>Testing Data:</strong> 20%</li>
+          <li><strong>Random State:</strong> 11</li>
+          <li><strong>Stratification:</strong> Yes (to maintain class distribution)</li>
+        </ul>
+      
+        <h4>Training Data Preview</h4>
+        <p>Sample of the training data used to train the SVM models:</p>
+        <img src="../images/svm_train_sample.png" alt="Training Data Sample" onclick="openModal(this)">
+        <a href="../data/svm_train_sample.csv" download class="download-btn">Download Training Sample CSV</a>
+      
+        <h4>Testing Data Preview</h4>
+        <p>Sample of the testing data used to evaluate model performance:</p>
+        <img src="../images/svm_test_sample.png" alt="Testing Data Sample" onclick="openModal(this)">
+        <a href="../data/svm_test_sample.csv" download class="download-btn">Download Testing Sample CSV</a>
+      
+        <h4>Dataset Summary</h4>
+        <p>Summary of the total number of samples and features:</p>
+        <img src="../images/svm_dataset_summary.png" alt="Dataset Summary" onclick="openModal(this)">
+        <h3>Step 5: Stratified Sampling for Faster Training</h3>
+            <p>
+                To speed up the model training process, especially while tuning hyperparameters, we applied <code>StratifiedShuffleSplit</code> 
+                from <code>sklearn.model_selection</code>. This ensured that a smaller subset (1,000 samples) was drawn from the training data, 
+                while preserving the same proportion of classes (stratification). This method balances efficiency with maintaining class distribution.
+            </p>
+      
+        
+      </div>
+      
+      <!-- SVM Models Built -->
+      <div class="info-box">
+        <h2>Model Building Overview</h2>
+        <p>We trained 9 models by varying kernels and C values:</p>
+        <ul>
+          <li>Kernels: Linear, Polynomial (degree 3), RBF (Radial Basis Function)</li>
+          <li>C Values: 0.1, 1, 10</li>
+        </ul>
+        <p>Training was done on a stratified subsample of 1000 samples for faster computation.</p>
+      </div>
+
+      <div class="info-box">
+        <h2>Confusion Matrices Overview</h2>
+        <p>The confusion matrices below summarize the performance of all 9 SVM models (across different kernels and C values).</p>
+        <img src="../images/svm_combined_cm.png" alt="Combined Confusion Matrices" onclick="openModal(this)">
+      </div>
+      
+      
+      
+
+      <!-- Model Performance Table -->
+      <div class="info-box">
+        <h2>Performance Comparison</h2>
+
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>Kernel</th>
+              <th>C Value</th>
+              <th>Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Linear</td><td>0.1</td><td>71.26%</td></tr>
+            <tr><td>Linear</td><td>1</td><td>69.74%</td></tr>
+            <tr><td>Linear</td><td>10</td><td>67.96%</td></tr>
+            <tr><td>RBF</td><td>0.1</td><td>13.77%</td></tr>
+            <tr><td>RBF</td><td>1</td><td>17.42%</td></tr>
+            <tr><td>RBF</td><td>10</td><td>28.44%</td></tr>
+            <tr><td>Polynomial</td><td>0.1</td><td>14.69%</td></tr>
+            <tr><td>Polynomial</td><td>1</td><td>18.56%</td></tr>
+            <tr><td>Polynomial</td><td>10</td><td>32.26%</td></tr>
+          </tbody>
+        </table>
+        <img src="../images/svm_accuracies_plot.png" alt="" onclick="openModal(this)">
+      </div>
+
+      <!-- PCA Visualizations -->
+      <div class="info-box">
+        <h2>Decision Boundaries (PCA Projection)</h2>
+        <p>This visualization shows how different SVM models (Linear, RBF, Polynomial) separated classes after applying PCA to reduce features into 2D.</p>
+        <img src="../images/svm_combined_pca.png" alt="Combined Decision Boundaries PCA" onclick="openModal(this)">
+      </div>
+
+<!-- Final Results and Conclusion -->
+<div class="info-box">
+    <h2>Final Results and Conclusion</h2>
+  
+    <h3>Key Insights</h3>
+    <ul>
+      <li>The <strong>Linear Kernel</strong> performed best overall, achieving approximately <strong>71% accuracy</strong> with <strong>C=0.1</strong>.</li>
+      <li><strong>RBF</strong> and <strong>Polynomial Kernels</strong> underperformed compared to Linear, likely because the data structure was already fairly separable without the need for complex transformations.</li>
+      <li>Choosing the right <strong>kernel</strong> and <strong>regularization parameter (C)</strong> is critical. A lower C value (C=0.1) led to better generalization by allowing a wider margin and preventing overfitting.</li>
+      <li>Stratified sampling (reducing training size with class balance) made the model training faster while maintaining meaningful class distributions.</li>
+    </ul>
+  
+    <h3>Technical Learnings</h3>
+    <ul>
+      <li>Although <strong>feature scaling</strong> was skipped here, in general, SVMs benefit greatly from proper scaling when features vary significantly in magnitude.</li>
+      <li><strong>Dimensionality transformations</strong> like polynomial kernels work well when the original data is complex but in this project, the simpler 2D-structure meant a linear separation was enough.</li>
+      <li>Overcomplicating the model with non-linear kernels can sometimes harm performance if the dataset does not need high flexibility.</li>
+      <li>StratifiedShuffleSplit was highly effective in balancing efficiency (faster model fitting) with data representativeness.</li>
+    </ul>
+  
+    <h3>Non-Technical Learnings</h3>
+    <p>
+      In simple words, trying to make the model more complicated didn’t help. 
+      A straight-line approach (linear model) was actually the best because our patient data was already organized enough to be divided easily. 
+      It's like drawing a simple fence instead of building a maze when a fence is all you need.
+    </p>
+    <p>
+      Also, we learned that reducing the amount of training data smartly (but without losing the variety) helped the model stay fast and accurate, showing that bigger is not always better if you sample wisely.
+    </p>
+  
+    <h3>Final Takeaway</h3>
+    <p>
+      The best-performing model for our diabetes prediction problem was a <strong>Linear SVM with C=0.1</strong>. 
+      It provided a strong balance between simplicity, generalization, training speed, and real-world applicability. 
+      Complex models like RBF or Polynomial kernels were unnecessary and even less accurate in this particular healthcare setting.
+    </p>
+    <p>
+      This project emphasized that <strong>understanding the data</strong> is just as important as building models sometimes, simpler methods deliver the smartest solutions.
+    </p>
+  </div>
+  
+
+  <!-- Fullscreen Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

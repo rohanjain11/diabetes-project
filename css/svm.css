@@ -1,0 +1,36 @@
+/* Inherit from PCA styles */
+@import url('pca.css');
+/* Page-specific tweaks */
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fdf8f2;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .result-table th {
+    background: #6a3f1d;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .result-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #d9c7b4;
+    color: #4b3621;
+  }
+  
+  .result-table tbody tr:nth-child(even) {
+    background: #f3e5d2;
+  }
+  
+  .result-table tbody tr:hover {
+    background: #e8d3b5;
+  }
+  
